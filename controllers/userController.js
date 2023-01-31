@@ -1,9 +1,9 @@
-const UserService = require("../services/userService")
+const userService = require("../services/userService")
 
 class UserController {
     async create(req, res) {
         try {
-            const user = await UserService.create(req.body)
+            const user = await userService.create(req.body)
             return res.json({
                 user: user,
                 message: "User successfully registered"                
@@ -15,7 +15,7 @@ class UserController {
 
     async getAll(req, res) {
         try {
-            const users = await UserService.getAll();
+            const users = await userService.getAll();
             return res.json(users);
 
         } catch (e) {
@@ -25,7 +25,7 @@ class UserController {
 
     async getOne(req, res) {
         try {
-            const user = await UserService.getOne(req.params.id)
+            const user = await userService.getOne(req.params.id)
             return res.json(user)
         } catch (e) {
             res.status(500).json(e)
@@ -34,7 +34,7 @@ class UserController {
 
     async delete(req, res) {
         try {
-            const user = await UserService.delete(req.params.id);
+            const user = await userService.delete(req.params.id);
             return res.json({
                 user: user,
                 message: "User deleted"  
