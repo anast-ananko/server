@@ -6,8 +6,8 @@ class UserService {
     async create(user) {
         const userRole = await Role.findOne({value: "USER"})
         const {email, password} = user
-        const newUser = new User({email, password: password, roles: [userRole.value]})
-        await newUser.save()
+        const newUser = await User.create({email, password: password, roles: [userRole.value]})
+       // await newUser.save()
         return newUser
     }
 
