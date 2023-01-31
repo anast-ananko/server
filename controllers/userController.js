@@ -43,6 +43,15 @@ class UserController {
             res.status(500).json(e)
         }
     }
+
+    async update(req, res) {
+        try {
+            const updatedUser = await userService.update(req.body);
+            return res.json(updatedUser);
+        } catch (e) {
+            res.status(500).json(e.message)
+        }
+    }
 }
 
 module.exports = new UserController()

@@ -25,6 +25,11 @@ class UserService {
         const user = await User.findByIdAndDelete(id);
         return user;
     }
+
+    async update(user) {
+        const updatedUser = await User.findByIdAndUpdate(user._id, user, {new: true})
+        return updatedUser;
+    }
 }
 
 module.exports = new UserService();
