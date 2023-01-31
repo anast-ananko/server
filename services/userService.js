@@ -13,7 +13,8 @@ class UserService {
 
     async getAll() {
         const users = await User.find();
-        return users;
+        const numUsers = await User.estimatedDocumentCount();
+        return {users, numUsers};
     }
 
     async getOne(id) {

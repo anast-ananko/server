@@ -8,7 +8,8 @@ class OrderService {
 
     async getAll() {
         const orders = await Order.find();
-        return orders;
+        const numOrders = await Order.estimatedDocumentCount();
+        return {orders, numOrders};
     }
 
     async getOne(id) {

@@ -12,7 +12,8 @@ class TieController {
 
     async getAll(req, res) {
         try {
-            const ties = await tieService.getAll();
+            const {ties, numTies} = await tieService.getAll();
+            res.setHeader("X-Total-Count", `${numTies}`);
             return res.json(ties);
 
         } catch (e) {

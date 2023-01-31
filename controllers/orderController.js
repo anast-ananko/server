@@ -13,7 +13,8 @@ class OrderController {
 
     async getAll(req, res) {
         try {
-            const orders = await orderService.getAll();
+            const {orders, numOrders} = await orderService.getAll();
+            res.setHeader("X-Total-Count", `${numOrders}`);
             return res.json(orders);
 
         } catch (e) {

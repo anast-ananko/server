@@ -11,7 +11,8 @@ class TieService {
 
     async getAll() {
         const ties = await Tie.find();
-        return ties;
+        const numTies = await Tie.estimatedDocumentCount();
+        return {ties, numTies};
     }
 
     async getOne(id) {

@@ -4,6 +4,7 @@ class UserController {
     async create(req, res) {
         try {
             const user = await userService.create(req.body)
+
             return res.json({
                 user: user,
                 message: "User successfully registered"                
@@ -15,7 +16,8 @@ class UserController {
 
     async getAll(req, res) {
         try {
-            const users = await userService.getAll();
+            const {users, numUsers} = await userService.getAll();
+            res.setHeader("X-Total-Count", `${numUsers}`);
             return res.json(users);
 
         } catch (e) {
