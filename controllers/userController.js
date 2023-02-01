@@ -1,7 +1,7 @@
 const userService = require("../services/userService");
 
 class UserController {
-  async create(req, res) {
+  async createUser(req, res) {
     try {
       const user = await userService.create(req.body);
 
@@ -14,7 +14,7 @@ class UserController {
     }
   }
 
-  async getAll(req, res) {
+  async getAllUsers(req, res) {
     try {
       const { users, numUsers } = await userService.getAll();
       res.setHeader("X-Total-Count", `${numUsers}`);
@@ -24,7 +24,7 @@ class UserController {
     }
   }
 
-  async getOne(req, res) {
+  async getOneUser(req, res) {
     try {
       const user = await userService.getOne(req.params.id);
       return res.json(user);
@@ -33,7 +33,7 @@ class UserController {
     }
   }
 
-  async delete(req, res) {
+  async deleteUser(req, res) {
     try {
       const user = await userService.delete(req.params.id);
       return res.json({
@@ -45,7 +45,7 @@ class UserController {
     }
   }
 
-  async update(req, res) {
+  async updateUser(req, res) {
     try {
       const updatedUser = await userService.update(req.body);
       return res.json(updatedUser);

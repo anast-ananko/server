@@ -1,7 +1,7 @@
 const tieService = require("../services/tieService");
 
 class TieController {
-  async create(req, res) {
+  async createTie(req, res) {
     try {
       const tie = await tieService.create(req.body, req.files.picture);
       return res.json(tie);
@@ -10,7 +10,7 @@ class TieController {
     }
   }
 
-  async getAll(req, res) {
+  async getAllTies(req, res) {
     try {
       const { ties, numTies } = await tieService.getAll();
       res.setHeader("X-Total-Count", `${numTies}`);
@@ -20,7 +20,7 @@ class TieController {
     }
   }
 
-  async getOne(req, res) {
+  async getOneTie(req, res) {
     try {
       const tie = await tieService.getOne(req.params.id);
       return res.json(tie);
@@ -29,7 +29,7 @@ class TieController {
     }
   }
 
-  async delete(req, res) {
+  async deleteTie(req, res) {
     try {
       const tie = await tieService.delete(req.params.id);
       return res.json({

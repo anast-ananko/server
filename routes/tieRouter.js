@@ -2,9 +2,9 @@ const Router = require("express");
 const router = new Router();
 const tieController = require("../controllers/tieController");
 
-router.post("/", tieController.create);
-router.get("/", tieController.getAll);
-router.get("/:id", tieController.getOne);
-router.delete("/:id", tieController.delete);
+router.post("/", tieController.createTie);
+router.get("/", tieController.getAllTies);
+router.get("/:id", tieController.getOneTie);
+router.delete("/:id", tieController.deleteTie);
 
 module.exports = router;

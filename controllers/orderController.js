@@ -1,7 +1,7 @@
 const orderService = require("../services/orderService");
 
 class OrderController {
-  async create(req, res) {
+  async createOrder(req, res) {
     try {
       console.log(req.body);
       const order = await orderService.create(req.body);
@@ -11,7 +11,7 @@ class OrderController {
     }
   }
 
-  async getAll(req, res) {
+  async getAllOrders(req, res) {
     try {
       const { orders, numOrders } = await orderService.getAll();
       res.setHeader("X-Total-Count", `${numOrders}`);
@@ -21,7 +21,7 @@ class OrderController {
     }
   }
 
-  async getOne(req, res) {
+  async getOneOrder(req, res) {
     try {
       const order = await orderService.getOne(req.params.id);
       return res.json(order);
@@ -30,7 +30,7 @@ class OrderController {
     }
   }
 
-  async delete(req, res) {
+  async deleteOrder(req, res) {
     try {
       const order = await orderService.delete(req.params.id);
       return res.json({
@@ -42,7 +42,7 @@ class OrderController {
     }
   }
 
-  async update(req, res) {
+  async updateOrder(req, res) {
     try {
       const updatedOrder = await orderService.update(req.body);
       return res.json(updatedOrder);
