@@ -1,6 +1,5 @@
 const Tie = require("../models/Tie");
 const fileService = require("../services/fileService");
-//const Role = require("../models/Role")
 
 class TieService {
   async create(tie, picture) {

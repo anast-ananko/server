@@ -2,16 +2,14 @@ const User = require("../models/User");
 const Role = require("../models/Role");
 
 class UserService {
-  // костыль для создания базы покупателей
   async create(user) {
     const userRole = await Role.findOne({ value: "USER" });
     const { email, password } = user;
     const newUser = await User.create({
       email,
       password: password,
-      roles: [userRole.value],
+      roles: userRole.value,
     });
-    // await newUser.save()
     return newUser;
   }
 
