@@ -2,38 +2,43 @@ const User = require("../models/User");
 const Role = require("../models/Role");
 
 class UserService {
-  async create(user) {
-    const userRole = await Role.findOne({ value: "USER" });
-    const { email, password } = user;
-    const newUser = await User.create({
-      email,
-      password: password,
-      roles: userRole.value,
-    });
-    return newUser;
-  }
-
-  async getAll() {
-    const users = await User.find();
+  async getUsers(role) {
+    let users;
+    if (role) {
+      users = await User.find({ role });
+    } else {
+      users = await User.find();
+    }
     const numUsers = await User.estimatedDocumentCount();
     return { users, numUsers };
   }
 
-  async getOne(id) {
+  async getUserById(id) {
     const user = await User.findById(id);
     return user;
   }
 
-  async delete(id) {
-    const user = await User.findByIdAndDelete(id);
-    return user;
+  async createUser(user) {
+    const userRole = await Role.findOne({ value: "USER" });
+    const { email, password } = user;
+    const newUser = await User.create({
+      email,
+      password,
+      role: userRole.value,
+    });
+    return newUser;
   }
 
-  async update(user) {
-    const updatedUser = await User.findByIdAndUpdate(user._id, user, {
+  async updateUser(id, user) {
+    const userToUpdate = await User.findByIdAndUpdate(id, user, {
       new: true,
     });
-    return updatedUser;
+    return userToUpdate;
+  }
+
+  async deleteUser(id) {
+    const user = await User.findByIdAndDelete(id);
+    return user;
   }
 }
 

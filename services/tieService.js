@@ -2,24 +2,29 @@ const Tie = require("../models/Tie");
 const fileService = require("../services/fileService");
 
 class TieService {
-  async create(tie, picture) {
-    const fileName = fileService.saveFile(picture);
-    const createdTie = await Tie.create({ ...tie, picture: fileName });
-    return createdTie;
-  }
-
-  async getAll() {
+  async getTies() {
     const ties = await Tie.find();
     const numTies = await Tie.estimatedDocumentCount();
     return { ties, numTies };
   }
 
-  async getOne(id) {
+  async getTieById(id) {
     const tie = await Tie.findById(id);
     return tie;
   }
 
-  async delete(id) {
+  async getTiesByUserId(id) {
+    const ties = await Tie.find({ userId: id });
+    return ties;
+  }
+
+  async createTie(tie, image) {
+    const fileName = fileService.saveFile(image);
+    const createdTie = await Tie.create({ ...tie, image: fileName });
+    return createdTie;
+  }
+
+  async deleteTie(id) {
     const tie = await Tie.findByIdAndDelete(id);
     return tie;
   }
