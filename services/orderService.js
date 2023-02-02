@@ -12,6 +12,11 @@ class OrderService {
     return order;
   }
 
+  async getOrdersByUserId(id) {
+    const orders = await Order.find({ userId: id });
+    return orders;
+  }
+
   async createOrder(order) {
     const createdOrder = await Order.create(order);
     return createdOrder;

@@ -25,6 +25,20 @@ class OrderController {
     }
   }
 
+  async getOrdersByUserId(req, res) {
+    try {
+      const orders = await orderService.getOrdersByUserId(req.params.id);
+      if (!orders) {
+        return res
+          .status(400)
+          .json({ message: "Orders for this user not found" });
+      }
+      return res.json(orders);
+    } catch (e) {
+      res.status(500).json(e);
+    }
+  }
+
   async createOrder(req, res) {
     try {
       if (!req.body.userId || !req.body.image || !req.body.price) {
