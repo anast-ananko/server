@@ -6,7 +6,7 @@ const Order = new Schema(
     image: { type: String, required: true },
     price: { type: Number, required: true },
     status: { type: String, default: "Accepted" },
-    date: { type: Date, default: Date.now }
+    date: { type: Date, default: Date.now },
   },
   { versionKey: false }
 );

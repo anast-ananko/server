@@ -1,18 +1,9 @@
 const tieService = require("../services/tieService");
 
 class TieController {
-  async createTie(req, res) {
+  async getTies(req, res) {
     try {
-      const tie = await tieService.create(req.body, req.files.picture);
-      return res.json(tie);
-    } catch (e) {
-      res.status(500).json(e);
-    }
-  }
-
-  async getAllTies(req, res) {
-    try {
-      const { ties, numTies } = await tieService.getAll();
+      const { ties, numTies } = await tieService.getTies();
       res.setHeader("X-Total-Count", `${numTies}`);
       return res.json(ties);
     } catch (e) {
@@ -20,10 +11,30 @@ class TieController {
     }
   }
 
-  async getOneTie(req, res) {
+  async getTieById(req, res) {
     try {
-      const tie = await tieService.getOne(req.params.id);
+      const tie = await tieService.getTieById(req.params.id);
+      if (!tie) {
+        return res.status(400).json({ message: "Tie with this id not found" });
+      }
       return res.json(tie);
+    } catch (e) {
+      res.status(500).json(e);
+    }
+  }
+
+  async createTie(req, res) {
+    try {
+      if (!req.body.userId || !req.body.name) {
+        return res
+          .status(400)
+          .json({ message: "Check if all fields are filled" });
+      }
+      const tie = await tieService.createTie(req.body, req.files.image);
+      return res.json({
+        tie: tie,
+        message: "Tie successfully added",
+      });
     } catch (e) {
       res.status(500).json(e);
     }
@@ -31,7 +42,7 @@ class TieController {
 
   async deleteTie(req, res) {
     try {
-      const tie = await tieService.delete(req.params.id);
+      const tie = await tieService.deleteTie(req.params.id);
       return res.json({
         tie: tie,
         message: "Tie deleted",

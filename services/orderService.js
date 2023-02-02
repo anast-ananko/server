@@ -18,7 +18,7 @@ class OrderService {
   }
 
   async updateOrder(id, order) {
-    console.log(order)
+    console.log(order);
     const updatedOrder = await Order.findByIdAndUpdate(id, order, {
       new: true,
     });
@@ -28,7 +28,7 @@ class OrderService {
   async deleteOrder(id) {
     const order = await Order.findByIdAndDelete(id);
     return order;
-  }  
+  }
 }
 
 module.exports = new OrderService();

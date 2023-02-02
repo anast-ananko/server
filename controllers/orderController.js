@@ -15,7 +15,9 @@ class OrderController {
     try {
       const order = await orderService.getOrderById(req.params.id);
       if (!order) {
-        return res.status(400).json({ message: "Order with this id not found" });
+        return res
+          .status(400)
+          .json({ message: "Order with this id not found" });
       }
       return res.json(order);
     } catch (e) {
@@ -26,7 +28,9 @@ class OrderController {
   async createOrder(req, res) {
     try {
       if (!req.body.userId || !req.body.image || !req.body.price) {
-        return res.status(400).json({ message: "Check if all fields are filled" });
+        return res
+          .status(400)
+          .json({ message: "Check if all fields are filled" });
       }
       const order = await orderService.createOrder(req.body);
       return res.json({
@@ -36,11 +40,14 @@ class OrderController {
     } catch (e) {
       res.status(500).json(e);
     }
-  }  
+  }
 
   async updateOrder(req, res) {
     try {
-      const updatedOrder = await orderService.updateOrder(req.params.id, req.body);
+      const updatedOrder = await orderService.updateOrder(
+        req.params.id,
+        req.body
+      );
       if (!updatedOrder) {
         return res.status(400).json({ message: "Order has not been updated" });
       }
@@ -60,7 +67,7 @@ class OrderController {
     } catch (e) {
       res.status(500).json(e);
     }
-  }  
+  }
 }
 
 module.exports = new OrderController();
