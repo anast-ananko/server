@@ -2,8 +2,13 @@ const User = require("../models/User");
 const Role = require("../models/Role");
 
 class UserService {
-  async getUsers() {
-    const users = await User.find();
+  async getUsers(role) {
+    let users;
+    if (role) {
+      users = await User.find({ role });
+    } else {
+      users = await User.find();
+    }
     const numUsers = await User.estimatedDocumentCount();
     return { users, numUsers };
   }

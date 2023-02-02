@@ -3,7 +3,8 @@ const userService = require("../services/userService");
 class UserController {
   async getUsers(req, res) {
     try {
-      const { users, numUsers } = await userService.getUsers();
+      const { role } = req.query;
+      const { users, numUsers } = await userService.getUsers(role);
       res.setHeader("X-Total-Count", `${numUsers}`);
       return res.json(users);
     } catch (e) {
