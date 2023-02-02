@@ -10,9 +10,6 @@ class UserService {
 
   async getUserById(id) {
     const user = await User.findById(id);
-    if (!user) {
-      throw new Error('No user with current id');
-    }
     return user;
   }
 
@@ -22,21 +19,21 @@ class UserService {
     const newUser = await User.create({
       email,
       password,
-      roles: userRole.value,
+      role: userRole.value,
     });
     return newUser;
-  }  
+  }
+
+  async updateUser(id, user) {
+    const userToUpdate = await User.findByIdAndUpdate(id, user, {
+      new: true,
+    });
+    return userToUpdate;
+  }
 
   async deleteUser(id) {
     const user = await User.findByIdAndDelete(id);
     return user;
-  }
-
-  async updateUser(user) {
-    const updatedUser = await User.findByIdAndUpdate(user._id, user, {
-      new: true,
-    });
-    return updatedUser;
   }
 }
 

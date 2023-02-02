@@ -15,7 +15,7 @@ class UserController {
     try {
       const user = await userService.getUserById(req.params.id);
       if (!user) {
-        throw new Error('No user with current id');
+        return res.status(400).json({ message: "User with this id not found" });
       }
       return res.json(user);
     } catch (e) {
@@ -25,6 +25,9 @@ class UserController {
 
   async createUser(req, res) {
     try {
+      if (!req.body.email || !req.body.password) {
+        return res.status(400).json({ message: "Incorrect email or password" });
+      }
       const user = await userService.createUser(req.body);
       return res.json({
         user: user,
@@ -37,12 +40,15 @@ class UserController {
 
   async updateUser(req, res) {
     try {
-      const updatedUser = await userService.updateUser(req.body);
+      const updatedUser = await userService.updateUser(req.params.id, req.body);
+      if (!updatedUser) {
+        return res.status(400).json({ message: "User has not been updated" });
+      }
       return res.json(updatedUser);
     } catch (e) {
       res.status(500).json(e.message);
     }
-  }  
+  }
 
   async deleteUser(req, res) {
     try {
@@ -55,7 +61,6 @@ class UserController {
       res.status(500).json(e);
     }
   }
-  
 }
 
 module.exports = new UserController();
