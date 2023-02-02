@@ -23,6 +23,15 @@ class TieController {
     }
   }
 
+  async getTiesByUserId(req, res) {
+    try {
+      const ties = await tieService.getTiesByUserId(req.params.id);
+      return res.json(ties);
+    } catch (e) {
+      res.status(500).json(e);
+    }
+  }
+
   async createTie(req, res) {
     try {
       if (!req.body.userId || !req.body.name) {

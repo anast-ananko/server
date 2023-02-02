@@ -13,6 +13,11 @@ class TieService {
     return tie;
   }
 
+  async getTiesByUserId(id) {
+    const ties = await Tie.find({ userId: id });
+    return ties;
+  }
+
   async createTie(tie, image) {
     const fileName = fileService.saveFile(image);
     const createdTie = await Tie.create({ ...tie, image: fileName });
