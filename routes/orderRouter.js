@@ -1,12 +1,22 @@
 const Router = require("express");
 const router = new Router();
 const orderController = require("../controllers/orderController");
+const roleMiddleware = require("../middlewares/roleMiddleware");
+const authMiddleware = require("../middlewares/authMiddleware");
 
-router.get("", orderController.getOrders);
+router.get("", roleMiddleware(["ADMIN", "MANAGER"]), orderController.getOrders);
 router.get("/:id", orderController.getOrderById);
-router.get("/user/:id", orderController.getOrdersByUserId);
-router.post("", orderController.createOrder);
-router.patch("/:id", orderController.updateOrder);
-router.delete("/:id", orderController.deleteOrder);
+router.get("/user/:id", authMiddleware, orderController.getOrdersByUserId);
+router.post("", authMiddleware, orderController.createOrder);
+router.patch(
+  "/:id",
+  roleMiddleware(["ADMIN", "MANAGER"]),
+  orderController.updateOrder
+);
+router.delete(
+  "/:id",
+  roleMiddleware(["ADMIN", "MANAGER"]),
+  orderController.deleteOrder
+);
 
 module.exports = router;
