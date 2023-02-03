@@ -1,14 +1,8 @@
 const User = require("../models/User");
 const Role = require("../models/Role");
 const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
 const { validationResult } = require("express-validator");
-
-const generateJwt = (id, role) => {
-  return jwt.sign({ id, role }, process.env.SECRET_KEY, {
-    expiresIn: "12h",
-  });
-};
+const generateJwt = require("../helpers/gererateJwt");
 
 class authController {
   async registration(req, res) {
@@ -18,6 +12,11 @@ class authController {
         return res.status(400).json({ message: "Registration error", errors });
       }
       const { email, password, role } = req.body;
+      if (!email || !password || !role) {
+        return res
+          .status(400)
+          .json({ message: "Сheck if all fields are filled", errors });
+      }
       const candidate = await User.findOne({ email });
       if (candidate) {
         return res.status(400).json({ message: "User with this name exists" });
