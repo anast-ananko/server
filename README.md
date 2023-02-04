@@ -54,9 +54,7 @@ Returns json data about users (only available for ADMIN and MANAGER).
 
 * **Headers:**
 
-    `'Content-Type': 'application/json'`<br />
     `'Authorization': 'Bearer [token]'`
-
 
 *  **URL Params**
 
@@ -121,7 +119,6 @@ Returns json data about selected user (only available for ADMIN and MANAGER).
 
 * **Headers:**
 
-    `'Content-Type': 'application/json'`<br />
     `'Authorization': 'Bearer [token]'`
 
 *  **URL Params**
@@ -220,7 +217,13 @@ Creates a new user.
  
 * **Error Response:**
 
-    None
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** 
+    ```json
+      {
+        message: "Incorrect email or password"
+      }
+    ```
 
 * **Notes:**
 

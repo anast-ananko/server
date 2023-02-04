@@ -8,7 +8,7 @@ class UserController {
       res.setHeader("X-Total-Count", `${numUsers}`);
       return res.json(users);
     } catch (e) {
-      res.status(500).json(e);
+      res.status(500).json(e.message);
     }
   }
 
@@ -16,7 +16,7 @@ class UserController {
     try {
       const user = await userService.getUserById(req.params.id);
       if (!user) {
-        return res.status(400).json({ message: "User with this id not found" });
+        return res.status(404).json({ message: "User with this id not found" });
       }
       return res.json(user);
     } catch (e) {
@@ -30,12 +30,9 @@ class UserController {
         return res.status(400).json({ message: "Incorrect email or password" });
       }
       const user = await userService.createUser(req.body);
-      return res.json({
-        user: user,
-        message: "User successfully registered",
-      });
+      return res.status(201).json(user);
     } catch (e) {
-      res.status(500).json(e);
+      res.status(500).json(e.message);
     }
   }
 
@@ -53,13 +50,10 @@ class UserController {
 
   async deleteUser(req, res) {
     try {
-      const user = await userService.deleteUser(req.params.id);
-      return res.json({
-        user: user,
-        message: "User deleted",
-      });
+      await userService.deleteUser(req.params.id);
+      return res.json({});
     } catch (e) {
-      res.status(500).json(e);
+      res.status(500).json(e.message);
     }
   }
 }
