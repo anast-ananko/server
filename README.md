@@ -1041,6 +1041,129 @@ Deletes selected tie (only available for ADMIN, MANAGER and SELLER).
 </details>
 
 
+**Registration**
+----
+Registration fo user.
+
+<details>
+
+* **URL**
+
+    /registration
+
+* **Method:**
+
+    `POST`
+
+* **Headers:**
+
+   `'Content-Type': 'application/json'`
+
+*  **URL Params**
+
+    **Required:**
+ 
+    `id=[string]`
+
+* **Query Params**
+
+    None
+
+* **Data Params**
+
+    None
+
+* **Success Response:**
+
+  * **Code:** 200 OK <br />
+    **Content:** 
+    ```json
+        {
+          "_id": "63dd20a04ccd605f5664e262",
+          "email": "user1@mail.ru",
+          "password": "$2a$04$PNpGTzompxdmhUbGX/kbRuy/56KMsWzyHsozQO2jct9H4JONhbOGW",
+          "role": "USER",
+          "date": "2023-02-03T14:56:32.461Z"
+        }
+    ```
+ 
+* **Error Response:**
+
+  * **Code:** 404 NOT FOUND <br />
+    **Content:** 
+    ```json
+      {}
+    ```
+
+* **Notes:**
+
+    None
+
+</details>
+
+
+**Auterization**
+----
+Auterization.
+
+<details>
+
+* **URL**
+
+    /login
+
+* **Method:**
+
+    `POST`
+
+* **Headers:**
+
+   `'Content-Type': 'application/json'`
+
+*  **URL Params**
+
+    None
+
+* **Query Params**
+
+    None
+
+* **Data Params**
+
+    None
+
+* **Success Response:**
+
+  * **Code:** 200 OK <br />
+    **Content:** 
+    ```json
+        {
+          "user": {
+              "_id": "63dd20914ccd605f5664e25e",
+              "email": "user5@mail.ru",
+              "password": "$2a$04$ZaOJYkDcaxFnzZ.y6kf9GOtfi5a1WCkenGZLFRtwj9PT/ct5qLw1i",
+              "role": "ADMIN",
+              "date": "2023-02-03T14:56:17.210Z"
+          },
+          "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.               eyJpZCI6IjYzZGQyMDkxNGNjZDYwNWY1NjY0ZTI1ZSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY3NTUxOTE1MywiZXhwIjoxNjc1NTYyMzUzfQ.aJImJSSVNLWgP1Y8QGK37kBQ-Qvtxg25N9dZbMzciZo"
+        }
+    ```
+ 
+* **Error Response:**
+
+  * **Code:** 404 NOT FOUND <br />
+    **Content:** 
+    ```json
+      {message: `User with user55@mail.ru not found`}
+    ```
+
+* **Notes:**
+
+    None
+
+</details>
+
+
 
 
 
