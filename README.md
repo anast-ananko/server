@@ -732,7 +732,313 @@ Deletes selected order (only available for ADMIN and MANAGER).
 </details>
 
 
+**Get Ties**
+----
+Returns json data about ties.
 
+<details>
+
+* **URL**
+
+    ties
+
+* **Method:**
+
+    `GET`
+
+* **Headers:**
+
+   `'Content-Type': 'application/json'`
+
+*  **URL Params**
+
+    None
+
+* **Query Params**
+
+      None
+  
+
+    Api returns a header `X-Total-Count` that countains total number of records.
+
+* **Data Params**
+
+    None
+
+* **Success Response:**
+
+  * **Code:** 200 OK <br />
+    **Content:** 
+    ```json
+      [
+        {
+          "_id": "63d9764a9110523df50c4d37",
+          "userId": "63dbd9a0ed3f9585d55acd7b",
+          "name": "Blue tie",
+          "image": "6be73cbd-1778-4e3b-a37a-bdbd10c0a827.jpg"
+        }
+      ]
+    ```
+    **Headers:**
+    ```
+      "X-Total-Count": "10"
+    ```
+ 
+* **Error Response:**
+
+    None
+
+* **Notes:**
+
+    None
+
+</details>
+
+**Get Tie**
+----
+Returns json data about selected tie.
+
+<details>
+
+* **URL**
+
+    /ties/:id
+
+* **Method:**
+
+    `GET`
+
+* **Headers:**
+
+   `'Content-Type': 'application/json'`
+
+*  **URL Params**
+
+    **Required:**
+ 
+    `id=[string]`
+
+* **Query Params**
+
+    None
+
+* **Data Params**
+
+    None
+
+* **Success Response:**
+
+  * **Code:** 200 OK <br />
+    **Content:** 
+    ```json
+        {
+          "_id": "63d9764a9110523df50c4d37",
+          "userId": "63dbd9a0ed3f9585d55acd7b",
+          "name": "Blue tie",
+          "image": "6be73cbd-1778-4e3b-a37a-bdbd10c0a827.jpg"
+        }
+    ```
+ 
+* **Error Response:**
+
+  * **Code:** 404 NOT FOUND <br />
+    **Content:** 
+    ```json
+      {}
+    ```
+
+* **Notes:**
+
+    None
+
+</details>
+
+
+**Get Ties by UserId**
+----
+Returns json data about all ties for selected user (only available for SELLER).
+
+<details>
+
+* **URL**
+
+    /ties/user/:id
+
+* **Method:**
+
+    `GET`
+
+* **Headers:**
+
+   `'Content-Type': 'application/json'`<br />
+   `'Authorization': 'Bearer [token]'`
+
+*  **URL Params**
+
+    **Required:**
+ 
+    `id=[string]`
+
+    Api returns a header `X-Total-Count` that countains total number of records.
+
+* **Query Params**
+
+    None
+
+* **Data Params**
+
+    None
+
+* **Success Response:**
+
+  * **Code:** 200 OK <br />
+    **Content:** 
+    ```json
+      [
+        {
+          "_id": "63d9764a9110523df50c4d37",
+          "userId": "63dbd9a0ed3f9585d55acd7b",
+          "name": "Blue tie",
+          "image": "6be73cbd-1778-4e3b-a37a-bdbd10c0a827.jpg"
+        }
+      ]
+    ```
+    **Headers:**
+    ```
+      "X-Total-Count": "10"
+    ```
+ 
+* **Error Response:**
+
+  * **Code:** 404 NOT FOUND <br />
+    **Content:** 
+    ```json
+      {}
+    ```
+
+* **Notes:**
+
+    None
+
+</details>
+
+
+
+**Create Tie**
+----
+Creates a new tie (only available for SELLER).
+
+<details>
+
+* **URL**
+
+    /ties
+
+* **Method:**
+
+    `POST`
+
+* **Headers:**
+
+    `'Content-Type': 'application/json'`<br />
+    `'Authorization': 'Bearer [token]'`
+
+*  **URL Params**
+
+    None
+
+* **Query Params**
+
+    None
+
+* **Data Params**
+
+    ```typescript
+        {
+          "userId": "63dbd9a0ed3f9585d55acd7b",
+          "name": "Blue tie",
+          Property image is optional
+          "image": "6be73cbd-1778-4e3b-a37a-bdbd10c0a827.jpg"
+        }
+    ```
+
+* **Success Response:**
+
+  * **Code:** 201 CREATED <br />
+    **Content:** 
+    ```json
+        {
+          "_id": "63d9764a9110523df50c4d37",
+          "userId": "63dbd9a0ed3f9585d55acd7b",
+          "name": "Blue tie",
+          "image": "6be73cbd-1778-4e3b-a37a-bdbd10c0a827.jpg"
+        }
+    ```
+ 
+* **Error Response:**
+
+    None
+
+* **Notes:**
+
+    None
+
+</details>
+
+
+**Delete Tie**
+----
+Deletes selected tie (only available for ADMIN, MANAGER and SELLER).
+
+<details>
+
+* **URL**
+
+    /ties/:id
+
+* **Method:**
+
+    `DELETE`
+
+* **Headers:**
+
+    `'Authorization': 'Bearer [token]'`
+
+*  **URL Params**
+
+    **Required:**
+ 
+    `id=[string]`
+
+* **Query Params**
+
+    None
+
+* **Data Params**
+
+    None
+
+* **Success Response:**
+
+  * **Code:** 200 OK <br />
+    **Content:** 
+    ```json
+      {}
+    ```
+ 
+* **Error Response:**
+
+  * **Code:** 404 NOT FOUND <br />
+    **Content:** 
+    ```json
+      {}
+    ```
+
+* **Notes:**
+
+    None
+
+</details>
 
 
 
