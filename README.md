@@ -54,7 +54,7 @@ Returns json data about users (only available for ADMIN and MANAGER).
 
 * **Headers:**
 
-   `'Content-Type': 'application/json'`
+   `'Content-Type': 'application/json'`<br />
    `'Authorization': 'Bearer [token]'`
 
 
@@ -121,7 +121,7 @@ Returns json data about selected user (only available for ADMIN and MANAGER).
 
 * **Headers:**
 
-   `'Content-Type': 'application/json'`
+   `'Content-Type': 'application/json'`<br />
    `'Authorization': 'Bearer [token]'`
 
 *  **URL Params**
@@ -243,7 +243,7 @@ Updates role of selected user (only available for ADMIN).
 
 * **Headers:**
 
-    `'Content-Type': 'application/json'`
+    `'Content-Type': 'application/json'`<br />
     `'Authorization': 'Bearer [token]'`
 
 *  **URL Params**
@@ -295,7 +295,7 @@ Updates role of selected user (only available for ADMIN).
 
 **Delete User**
 ----
-Delete selected user (only available for ADMIN).
+Deletes selected user (only available for ADMIN).
 
 <details>
 
@@ -347,162 +347,15 @@ Delete selected user (only available for ADMIN).
 
 </details>
 
-
-
-**Start / Stop Car's Engine**
+**Get Orders**
 ----
-Starts or stops engine of specified car, and returns it's actual velocity and distance.
+Returns json data about orders (only available for ADMIN and MANAGER).
 
 <details>
 
 * **URL**
 
-    /engine
-
-* **Method:**
-
-    `PATCH`
-
-* **Headers:**
-
-    None
-
-*  **URL Params**
-
-    None
-
-* **Query Params**
-
-    **Required:**
- 
-    `id=[integer]`
-  
-    `status=['started'|'stopped']`
-
-* **Data Params**
-
-    None
-
-* **Success Response:**
-
-  * **Code:** 200 OK <br />
-    **Content:** 
-    ```json
-      {
-        "velocity": 64,
-        "distance": 500000
-      }
-    ```
- 
-* **Error Response:**
-
-  * **Code:** 400 BAD REQUEST <br />
-      **Content:** 
-
-      Wrong parameters: "id" should be any positive number, "status" should be "started", "stopped" or "drive"
-
-  OR
-
-  * **Code:** 404 NOT FOUND <br />
-      **Content:** 
-
-      Car with such id was not found in the garage.
-
-* **Notes:**
-
-    None
-
-</details>
-
-**Switch Car's Engine to Drive Mode**
-----
-Switches engine of specified car to drive mode and finishes with success message or fails with 500 error.
-
-<details>
-
-* **URL**
-
-    /engine
-
-* **Method:**
-
-    `PATCH`
-
-* **Headers:**
-
-    None
-
-*  **URL Params**
-
-    None
-
-* **Query Params**
-
-    **Required:**
- 
-    `id=[integer]`
-  
-    `status=['drive']`
-
-* **Data Params**
-
-    None
-
-* **Success Response:**
-
-  * **Code:** 200 OK <br />
-    **Content:** 
-    ```json
-      {
-        "success": true
-      }
-    ```
- 
-* **Error Response:**
-
-  * **Code:** 400 BAD REQUEST <br />
-      **Content:** 
-
-      Wrong parameters: "id" should be any positive number, "status" should be "started", "stopped" or "drive"
-
-  OR
-  
-  * **Code:** 404 NOT FOUND <br />
-      **Content:** 
-
-      Engine parameters for car with such id was not found in the garage. Have you tried to set engine status to "started" before?
-
-  OR
-
-  * **Code:** 429 TOO MANY REQUESTS <br />
-      **Content:** 
-
-      Drive already in progress. You can't run drive for the same car twice while it's not stopped.
-
-  OR
-
-  * **Code:** 500 INTERNAL SERVER ERROR <br />
-      **Content:** 
-
-      Car has been stopped suddenly. It's engine was broken down.
-
-* **Notes:**
-
-    - Before using this request you need to switch engine status to the 'started' status first.
-    - Time when response will finish can be calculated using response from making engine 'started'.
-    - Engine may fall randomly and at random time at the whole distance.
-
-</details>
-
-**Get Winners**
-----
-Returns json data about winners.
-
-<details>
-
-* **URL**
-
-    /winners
+    orders
 
 * **Method:**
 
@@ -510,7 +363,9 @@ Returns json data about winners.
 
 * **Headers:**
 
-    None
+   `'Content-Type': 'application/json'`<br />
+   `'Authorization': 'Bearer [token]'`
+
 
 *  **URL Params**
 
@@ -518,17 +373,10 @@ Returns json data about winners.
 
 * **Query Params**
 
-    **Optional:**
- 
-    `_page=[integer]`
+      None
   
-    `_limit=[integer]`
 
-    `_sort=['id'|'wins'|'time']`
-
-    `_order=['ASC'|'DESC']`
-
-    If `_limit` param is passed api returns a header `X-Total-Count` that countains total number of records.
+    Api returns a header `X-Total-Count` that countains total number of records.
 
 * **Data Params**
 
@@ -541,15 +389,18 @@ Returns json data about winners.
     ```json
       [
         {
-          "id": 16,
-          "wins": 1,
-          "time": 2.92
+          "_id": "63dd20a04ccd605f5664e262",
+          "userId": "63dbd9a0ed3f9585d55acd7b",
+          "image": "0bf7f318-5e02-431c-b684-55a481c5bfac.jpg",
+          "price": 30,
+          "status": "NON-PAID",
+          "date": "2023-02-03T14:56:32.461Z"
         }
       ]
     ```
     **Headers:**
     ```
-      "X-Total-Count": "4"
+      "X-Total-Count": "10"
     ```
  
 * **Error Response:**
@@ -562,15 +413,15 @@ Returns json data about winners.
 
 </details>
 
-**Get Winner**
+**Get Order**
 ----
-Returns json data about specified winner.
+Returns json data about selected order (only available for authorized users).
 
 <details>
 
 * **URL**
 
-    /winners/:id
+    /orders/:id
 
 * **Method:**
 
@@ -578,13 +429,14 @@ Returns json data about specified winner.
 
 * **Headers:**
 
-    None
+   `'Content-Type': 'application/json'`<br />
+   `'Authorization': 'Bearer [token]'`
 
 *  **URL Params**
 
     **Required:**
  
-    `id=[integer]`
+    `id=[string]`
 
 * **Query Params**
 
@@ -599,11 +451,14 @@ Returns json data about specified winner.
   * **Code:** 200 OK <br />
     **Content:** 
     ```json
-      {
-          "id": 1,
-          "wins": 1,
-          "time": 10
-      }
+        {
+          "_id": "63dd20a04ccd605f5664e262",
+          "userId": "63dbd9a0ed3f9585d55acd7b",
+          "image": "0bf7f318-5e02-431c-b684-55a481c5bfac.jpg",
+          "price": 30,
+          "status": "NON-PAID",
+          "date": "2023-02-03T14:56:32.461Z"
+        }
     ```
  
 * **Error Response:**
@@ -620,15 +475,88 @@ Returns json data about specified winner.
 
 </details>
 
-**Create Winner**
+
+**Get Orders by UserId**
 ----
-Creates a new records in a winners table.
+Returns json data about all orders for selected user (only available for authorized users).
 
 <details>
 
 * **URL**
 
-    /winners
+    /orders/user/:id
+
+* **Method:**
+
+    `GET`
+
+* **Headers:**
+
+   `'Content-Type': 'application/json'`<br />
+   `'Authorization': 'Bearer [token]'`
+
+*  **URL Params**
+
+    **Required:**
+ 
+    `id=[string]`
+
+    Api returns a header `X-Total-Count` that countains total number of records.
+
+* **Query Params**
+
+    None
+
+* **Data Params**
+
+    None
+
+* **Success Response:**
+
+  * **Code:** 200 OK <br />
+    **Content:** 
+    ```json
+      [
+        {
+          "_id": "63dd20a04ccd605f5664e262",
+          "userId": "63dbd9a0ed3f9585d55acd7b",
+          "image": "0bf7f318-5e02-431c-b684-55a481c5bfac.jpg",
+          "price": 30,
+          "status": "NON-PAID",
+          "date": "2023-02-03T14:56:32.461Z"
+        }
+      ]
+    ```
+    **Headers:**
+    ```
+      "X-Total-Count": "10"
+    ```
+ 
+* **Error Response:**
+
+  * **Code:** 404 NOT FOUND <br />
+    **Content:** 
+    ```json
+      {}
+    ```
+
+* **Notes:**
+
+    None
+
+</details>
+
+
+
+**Create Order**
+----
+Creates a new order (only available for authorized users).
+
+<details>
+
+* **URL**
+
+    /orders
 
 * **Method:**
 
@@ -636,7 +564,8 @@ Creates a new records in a winners table.
 
 * **Headers:**
 
-    `'Content-Type': 'application/json'`
+    `'Content-Type': 'application/json'`<br />
+    `'Authorization': 'Bearer [token]'`
 
 *  **URL Params**
 
@@ -649,11 +578,11 @@ Creates a new records in a winners table.
 * **Data Params**
 
     ```typescript
-      {
-        id: number,
-        wins: number,
-        time: number
-      }
+        {
+          "userId": "63dbd9a0ed3f9585d55acd7b",
+          "image": "0bf7f318-5e02-431c-b684-55a481c5bfac.jpg",
+          "price": 30
+        }
     ```
 
 * **Success Response:**
@@ -661,19 +590,19 @@ Creates a new records in a winners table.
   * **Code:** 201 CREATED <br />
     **Content:** 
     ```json
-      {
-        "id": 109,
-        "wins": 1,
-        "time": 10
-      }
+        {
+          "_id": "63dd20a04ccd605f5664e262",
+          "userId": "63dbd9a0ed3f9585d55acd7b",
+          "image": "0bf7f318-5e02-431c-b684-55a481c5bfac.jpg",
+          "price": 30,
+          "status": "NON-PAID",
+          "date": "2023-02-03T14:56:32.461Z"
+        }
     ```
  
 * **Error Response:**
 
-  * **Code:** 500 INTERNAL SERVER ERROR <br />
-      **Content:** 
-
-      Error: Insert failed, duplicate id
+    None
 
 * **Notes:**
 
@@ -681,83 +610,31 @@ Creates a new records in a winners table.
 
 </details>
 
-**Delete Winner**
+
+**Update Order**
 ----
-Delete specified car from a garage
+Updates status of selected order (only available for ADMIN and MANAGER).
 
 <details>
 
 * **URL**
 
-    /winners/:id
+    /orders/:id
 
 * **Method:**
 
-    `DELETE`
+    `PATCH`
 
 * **Headers:**
 
-    None
-
-*  **URL Params**
-
-    **Required:**
- 
-    `id=[integer]`
-
-* **Query Params**
-
-    None
-
-* **Data Params**
-
-    None
-
-* **Success Response:**
-
-  * **Code:** 200 OK <br />
-    **Content:** 
-    ```json
-      {}
-    ```
- 
-* **Error Response:**
-
-  * **Code:** 404 NOT FOUND <br />
-    **Content:** 
-    ```json
-      {}
-    ```
-
-* **Notes:**
-
-    None
-
-</details>
-
-**Update Winner**
-----
-Updates attributes of specified winner.
-
-<details>
-
-* **URL**
-
-    /winners/:id
-
-* **Method:**
-
-    `PUT`
-
-* **Headers:**
-
-    `'Content-Type': 'application/json'`
+    `'Content-Type': 'application/json'`<br />
+    `'Authorization': 'Bearer [token]'`
 
 *  **URL Params**
 
     **Required:**
 
-    `id=[integer]`
+    `id=[string]`
 
 * **Query Params**
 
@@ -767,8 +644,7 @@ Updates attributes of specified winner.
 
     ```typescript
       {
-        wins: number,
-        time: number
+        "status": ['NON-PAID', 'PAID', 'DECLINED', 'IN PROGRESS', 'FINISHED']
       }
     ```
 
@@ -777,11 +653,14 @@ Updates attributes of specified winner.
   * **Code:** 200 OK <br />
     **Content:** 
     ```json
-      {
-        "wins": 2,
-        "time": 11,
-        "id": 16
-      }
+        {
+          "_id": "63dd20a04ccd605f5664e262",
+          "userId": "63dbd9a0ed3f9585d55acd7b",
+          "image": "0bf7f318-5e02-431c-b684-55a481c5bfac.jpg",
+          "price": 30,
+          "status": "PAID",
+          "date": "2023-02-03T14:56:32.461Z"
+        }
     ```
  
 * **Error Response:**
@@ -797,3 +676,73 @@ Updates attributes of specified winner.
     None
 
 </details>
+
+**Delete Order**
+----
+Deletes selected order (only available for ADMIN and MANAGER).
+
+<details>
+
+* **URL**
+
+    /orders/:id
+
+* **Method:**
+
+    `DELETE`
+
+* **Headers:**
+
+    `'Authorization': 'Bearer [token]'`
+
+*  **URL Params**
+
+    **Required:**
+ 
+    `id=[string]`
+
+* **Query Params**
+
+    None
+
+* **Data Params**
+
+    None
+
+* **Success Response:**
+
+  * **Code:** 200 OK <br />
+    **Content:** 
+    ```json
+      {}
+    ```
+ 
+* **Error Response:**
+
+  * **Code:** 404 NOT FOUND <br />
+    **Content:** 
+    ```json
+      {}
+    ```
+
+* **Notes:**
+
+    None
+
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
