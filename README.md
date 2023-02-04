@@ -11,36 +11,36 @@ Api for Tie Creators.
 - Now you can send requests to the address: `http://localhost:5000`.
 
 - **Users**
-    - [Get Users](https://github.com/anast-ananko/server#get-users)
-    - [Get User](https://github.com/anast-ananko/server#get-user)
-    - [Create User](https://github.com/anast-ananko/server#create-user)
-    - [Update User](https://github.com/anast-ananko/server#update-user)
-    - [Delete User](https://github.com/anast-ananko/server#delete-user)
+    - [Get Users](https://github.com/anast-ananko/server/tree/develop#get-users)
+    - [Get User](https://github.com/anast-ananko/server/tree/develop#get-user)
+    - [Create User](https://github.com/anast-ananko/server/tree/develop#create-user)
+    - [Update User](https://github.com/anast-ananko/server/tree/develop#update-user)
+    - [Delete User](https://github.com/anast-ananko/server/tree/develop#delete-user)
   
 - **Orders**
-    - [Get Orders](https://github.com/anast-ananko/server#get-orders)
-    - [Get Order](https://github.com/anast-ananko/server#get-order)
-    - [Get Order by UserId](https://github.com/anast-ananko/server#get-order-by-user-id)
-    - [Create Order](https://github.com/anast-ananko/server#create-order)
-    - [Update Order](https://github.com/anast-ananko/server#update-order)
-    - [Delete Order](https://github.com/anast-ananko/server#delete-order)
+    - [Get Orders](https://github.com/anast-ananko/server/tree/develop#get-orders)
+    - [Get Order](https://github.com/anast-ananko/server/tree/develop#get-order)
+    - [Get Order by UserId](https://github.com/anast-ananko/server/tree/develop#get-order-by-user-id)
+    - [Create Order](https://github.com/anast-ananko/server/tree/develop#create-order)
+    - [Update Order](https://github.com/anast-ananko/server/tree/develop#update-order)
+    - [Delete Order](https://github.com/anast-ananko/server/tree/develop#delete-order)
 
 - **Ties**
-    - [Get Ties](https://github.com/anast-ananko/server#get-ties)
-    - [Get Tie](https://github.com/anast-ananko/server#get-tie)
-    - [Get Tie by UserId](https://github.com/anast-ananko/server#get-tie-by-user-id)
-    - [Create Tie](https://github.com/anast-ananko/server#create-tie)
-    - [Update Tie](https://github.com/anast-ananko/server#update-tie)
-    - [Delete Tie](https://github.com/anast-ananko/server#delete-tie)
+    - [Get Ties](https://github.com/anast-ananko/server/tree/develop#get-ties)
+    - [Get Tie](https://github.com/anast-ananko/server/tree/develop#get-tie)
+    - [Get Tie by UserId](https://github.com/anast-ananko/server/tree/develop#get-tie-by-user-id)
+    - [Create Tie](https://github.com/anast-ananko/server/tree/develop#create-tie)
+    - [Update Tie](https://github.com/anast-ananko/server/tree/develop#update-tie)
+    - [Delete Tie](https://github.com/anast-ananko/server/tree/develop#delete-tie)
    
 - **Registration and Authorization**
-    - [Registration](https://github.com/anast-ananko/server#registration)
-    - [Authorization](https://github.com/anast-ananko/server#authorization)
+    - [Registration](https://github.com/anast-ananko/server/tree/develop#registration)
+    - [Authorization](https://github.com/anast-ananko/server/tree/develop#authorization)
 
 
 **Get Users**
 ----
-Returns json data about users.
+Returns json data about users (only available for ADMIN and MANAGER).
 
 <details>
 
@@ -54,7 +54,9 @@ Returns json data about users.
 
 * **Headers:**
 
-    None
+   `'Content-Type': 'application/json'`
+   `'Authorization': 'Bearer [token]'`
+
 
 *  **URL Params**
 
@@ -105,7 +107,7 @@ Returns json data about users.
 
 **Get User**
 ----
-Returns json data about specified user.
+Returns json data about selected user (only available for ADMIN and MANAGER).
 
 <details>
 
@@ -119,7 +121,8 @@ Returns json data about specified user.
 
 * **Headers:**
 
-    None
+   `'Content-Type': 'application/json'`
+   `'Authorization': 'Bearer [token]'`
 
 *  **URL Params**
 
@@ -195,7 +198,7 @@ Creates a new user.
       {
         "email": "user1@mail.ru",
         "password": "user1",
-        "role": "USER",
+        "role": ["USER"|"SELLER"]
       }
     ```
 
@@ -226,7 +229,7 @@ Creates a new user.
 
 **Update User**
 ----
-Updates role of selected user.
+Updates role of selected user (only available for ADMIN).
 
 <details>
 
@@ -241,6 +244,7 @@ Updates role of selected user.
 * **Headers:**
 
     `'Content-Type': 'application/json'`
+    `'Authorization': 'Bearer [token]'`
 
 *  **URL Params**
 
@@ -267,7 +271,7 @@ Updates role of selected user.
     ```json
       {
         
-         "_id": "63dd20a04ccd605f5664e262",
+          "_id": "63dd20a04ccd605f5664e262",
           "email": "user1@mail.ru",
           "password": "$2a$04$PNpGTzompxdmhUbGX/kbRuy/56KMsWzyHsozQO2jct9H4JONhbOGW",
           "role": "MANAGER",
@@ -291,7 +295,7 @@ Updates role of selected user.
 
 **Delete User**
 ----
-Delete specified user.
+Delete selected user (only available for ADMIN).
 
 <details>
 
@@ -305,7 +309,7 @@ Delete specified user.
 
 * **Headers:**
 
-    None
+    `'Authorization': 'Bearer [token]'`
 
 *  **URL Params**
 
