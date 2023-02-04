@@ -54,8 +54,8 @@ Returns json data about users (only available for ADMIN and MANAGER).
 
 * **Headers:**
 
-   `'Content-Type': 'application/json'`<br />
-   `'Authorization': 'Bearer [token]'`
+    `'Content-Type': 'application/json'`<br />
+    `'Authorization': 'Bearer [token]'`
 
 
 *  **URL Params**
@@ -121,8 +121,8 @@ Returns json data about selected user (only available for ADMIN and MANAGER).
 
 * **Headers:**
 
-   `'Content-Type': 'application/json'`<br />
-   `'Authorization': 'Bearer [token]'`
+    `'Content-Type': 'application/json'`<br />
+    `'Authorization': 'Bearer [token]'`
 
 *  **URL Params**
 
@@ -143,13 +143,13 @@ Returns json data about selected user (only available for ADMIN and MANAGER).
   * **Code:** 200 OK <br />
     **Content:** 
     ```json
-        {
-          "_id": "63dd20a04ccd605f5664e262",
-          "email": "user1@mail.ru",
-          "password": "$2a$04$PNpGTzompxdmhUbGX/kbRuy/56KMsWzyHsozQO2jct9H4JONhbOGW",
-          "role": "USER",
-          "date": "2023-02-03T14:56:32.461Z"
-        }
+      {
+        "_id": "63dd20a04ccd605f5664e262",
+        "email": "user1@mail.ru",
+        "password": "$2a$04$PNpGTzompxdmhUbGX/kbRuy/56KMsWzyHsozQO2jct9H4JONhbOGW",
+        "role": "USER",
+        "date": "2023-02-03T14:56:32.461Z"
+      }
     ```
  
 * **Error Response:**
@@ -157,7 +157,9 @@ Returns json data about selected user (only available for ADMIN and MANAGER).
   * **Code:** 404 NOT FOUND <br />
     **Content:** 
     ```json
-      {}
+      {
+        message: "User with this id not found"
+      }
     ```
 
 * **Notes:**
@@ -208,11 +210,11 @@ Creates a new user.
     **Content:** 
     ```json
       {
-         "_id": "63dd20a04ccd605f5664e262",
-          "email": "user1@mail.ru",
-          "password": "$2a$04$PNpGTzompxdmhUbGX/kbRuy/56KMsWzyHsozQO2jct9H4JONhbOGW",
-          "role": "USER",
-          "date": "2023-02-03T14:56:32.461Z"
+        "_id": "63dd20a04ccd605f5664e262",
+        "email": "user1@mail.ru",
+        "password": "$2a$04$PNpGTzompxdmhUbGX/kbRuy/56KMsWzyHsozQO2jct9H4JONhbOGW",
+        "role": "USER",
+        "date": "2023-02-03T14:56:32.461Z"
       }
     ```
  
@@ -269,22 +271,23 @@ Updates role of selected user (only available for ADMIN).
   * **Code:** 200 OK <br />
     **Content:** 
     ```json
-      {
-        
-          "_id": "63dd20a04ccd605f5664e262",
-          "email": "user1@mail.ru",
-          "password": "$2a$04$PNpGTzompxdmhUbGX/kbRuy/56KMsWzyHsozQO2jct9H4JONhbOGW",
-          "role": "MANAGER",
-          "date": "2023-02-03T14:56:32.461Z"
+      {        
+        "_id": "63dd20a04ccd605f5664e262",
+        "email": "user1@mail.ru",
+        "password": "$2a$04$PNpGTzompxdmhUbGX/kbRuy/56KMsWzyHsozQO2jct9H4JONhbOGW",
+        "role": "MANAGER",
+        "date": "2023-02-03T14:56:32.461Z"
       }
     ```
  
 * **Error Response:**
 
-  * **Code:** 404 NOT FOUND <br />
+  * **Code:** 404 BAD REQUEST <br />
     **Content:** 
     ```json
-      {}
+      {
+        message: "User has not been updated"
+      }
     ```
 
 * **Notes:**
@@ -429,8 +432,8 @@ Returns json data about selected order (only available for authorized users).
 
 * **Headers:**
 
-   `'Content-Type': 'application/json'`<br />
-   `'Authorization': 'Bearer [token]'`
+    `'Content-Type': 'application/json'`<br />
+    `'Authorization': 'Bearer [token]'`
 
 *  **URL Params**
 
@@ -451,14 +454,14 @@ Returns json data about selected order (only available for authorized users).
   * **Code:** 200 OK <br />
     **Content:** 
     ```json
-        {
-          "_id": "63dd20a04ccd605f5664e262",
-          "userId": "63dbd9a0ed3f9585d55acd7b",
-          "image": "0bf7f318-5e02-431c-b684-55a481c5bfac.jpg",
-          "price": 30,
-          "status": "NON-PAID",
-          "date": "2023-02-03T14:56:32.461Z"
-        }
+      {
+        "_id": "63dd20a04ccd605f5664e262",
+        "userId": "63dbd9a0ed3f9585d55acd7b",
+        "image": "0bf7f318-5e02-431c-b684-55a481c5bfac.jpg",
+        "price": 30,
+        "status": "NON-PAID",
+        "date": "2023-02-03T14:56:32.461Z"
+      }
     ```
  
 * **Error Response:**
@@ -466,7 +469,9 @@ Returns json data about selected order (only available for authorized users).
   * **Code:** 404 NOT FOUND <br />
     **Content:** 
     ```json
-      {}
+      {
+        message: "User with this id not found"
+      }
     ```
 
 * **Notes:**
@@ -534,18 +539,13 @@ Returns json data about all orders for selected user (only available for authori
  
 * **Error Response:**
 
-  * **Code:** 404 NOT FOUND <br />
-    **Content:** 
-    ```json
-      {}
-    ```
+    None
 
 * **Notes:**
 
     None
 
 </details>
-
 
 
 **Create Order**
@@ -578,11 +578,11 @@ Creates a new order (only available for authorized users).
 * **Data Params**
 
     ```typescript
-        {
-          "userId": "63dbd9a0ed3f9585d55acd7b",
-          "image": "0bf7f318-5e02-431c-b684-55a481c5bfac.jpg",
-          "price": 30
-        }
+      {
+        "userId": "63dbd9a0ed3f9585d55acd7b",
+        "image": "0bf7f318-5e02-431c-b684-55a481c5bfac.jpg",
+        "price": 30
+      }
     ```
 
 * **Success Response:**
@@ -590,14 +590,14 @@ Creates a new order (only available for authorized users).
   * **Code:** 201 CREATED <br />
     **Content:** 
     ```json
-        {
-          "_id": "63dd20a04ccd605f5664e262",
-          "userId": "63dbd9a0ed3f9585d55acd7b",
-          "image": "0bf7f318-5e02-431c-b684-55a481c5bfac.jpg",
-          "price": 30,
-          "status": "NON-PAID",
-          "date": "2023-02-03T14:56:32.461Z"
-        }
+      {
+        "_id": "63dd20a04ccd605f5664e262",
+        "userId": "63dbd9a0ed3f9585d55acd7b",
+        "image": "0bf7f318-5e02-431c-b684-55a481c5bfac.jpg",
+        "price": 30,
+        "status": "NON-PAID",
+        "date": "2023-02-03T14:56:32.461Z"
+      }
     ```
  
 * **Error Response:**
@@ -653,14 +653,14 @@ Updates status of selected order (only available for ADMIN and MANAGER).
   * **Code:** 200 OK <br />
     **Content:** 
     ```json
-        {
-          "_id": "63dd20a04ccd605f5664e262",
-          "userId": "63dbd9a0ed3f9585d55acd7b",
-          "image": "0bf7f318-5e02-431c-b684-55a481c5bfac.jpg",
-          "price": 30,
-          "status": "PAID",
-          "date": "2023-02-03T14:56:32.461Z"
-        }
+      {
+        "_id": "63dd20a04ccd605f5664e262",
+        "userId": "63dbd9a0ed3f9585d55acd7b",
+        "image": "0bf7f318-5e02-431c-b684-55a481c5bfac.jpg",
+        "price": 30,
+        "status": "PAID",
+        "date": "2023-02-03T14:56:32.461Z"
+      }
     ```
  
 * **Error Response:**
@@ -668,7 +668,9 @@ Updates status of selected order (only available for ADMIN and MANAGER).
   * **Code:** 404 NOT FOUND <br />
     **Content:** 
     ```json
-      {}
+      {
+        message: "Order has not been updated"
+      }
     ```
 
 * **Notes:**
@@ -831,12 +833,12 @@ Returns json data about selected tie.
   * **Code:** 200 OK <br />
     **Content:** 
     ```json
-        {
-          "_id": "63d9764a9110523df50c4d37",
-          "userId": "63dbd9a0ed3f9585d55acd7b",
-          "name": "Blue tie",
-          "image": "6be73cbd-1778-4e3b-a37a-bdbd10c0a827.jpg"
-        }
+      {
+        "_id": "63d9764a9110523df50c4d37",
+        "userId": "63dbd9a0ed3f9585d55acd7b",
+        "name": "Blue tie",
+        "image": "6be73cbd-1778-4e3b-a37a-bdbd10c0a827.jpg"
+      }
     ```
  
 * **Error Response:**
@@ -844,7 +846,9 @@ Returns json data about selected tie.
   * **Code:** 404 NOT FOUND <br />
     **Content:** 
     ```json
-      {}
+      {
+         message: "Tie with this id not found"
+      }
     ```
 
 * **Notes:**
@@ -910,18 +914,13 @@ Returns json data about all ties for selected user (only available for SELLER).
  
 * **Error Response:**
 
-  * **Code:** 404 NOT FOUND <br />
-    **Content:** 
-    ```json
-      {}
-    ```
+    None
 
 * **Notes:**
 
     None
 
 </details>
-
 
 
 **Create Tie**
@@ -954,12 +953,12 @@ Creates a new tie (only available for SELLER).
 * **Data Params**
 
     ```typescript
-        {
-          "userId": "63dbd9a0ed3f9585d55acd7b",
-          "name": "Blue tie",
-          Property image is optional
-          "image": "6be73cbd-1778-4e3b-a37a-bdbd10c0a827.jpg"
-        }
+      {
+        "userId": "63dbd9a0ed3f9585d55acd7b",
+        "name": "Blue tie",
+        Property image is optional
+        "image": "6be73cbd-1778-4e3b-a37a-bdbd10c0a827.jpg"
+      }
     ```
 
 * **Success Response:**
@@ -967,12 +966,12 @@ Creates a new tie (only available for SELLER).
   * **Code:** 201 CREATED <br />
     **Content:** 
     ```json
-        {
-          "_id": "63d9764a9110523df50c4d37",
-          "userId": "63dbd9a0ed3f9585d55acd7b",
-          "name": "Blue tie",
-          "image": "6be73cbd-1778-4e3b-a37a-bdbd10c0a827.jpg"
-        }
+      {
+        "_id": "63d9764a9110523df50c4d37",
+        "userId": "63dbd9a0ed3f9585d55acd7b",
+        "name": "Blue tie",
+        "image": "6be73cbd-1778-4e3b-a37a-bdbd10c0a827.jpg"
+      }
     ```
  
 * **Error Response:**
@@ -1043,7 +1042,7 @@ Deletes selected tie (only available for ADMIN, MANAGER and SELLER).
 
 **Registration**
 ----
-Registration fo user.
+Registration for user.
 
 <details>
 
@@ -1057,13 +1056,11 @@ Registration fo user.
 
 * **Headers:**
 
-   `'Content-Type': 'application/json'`
+    `'Content-Type': 'application/json'`
 
 *  **URL Params**
 
-    **Required:**
- 
-    `id=[string]`
+    None
 
 * **Query Params**
 
@@ -1078,21 +1075,31 @@ Registration fo user.
   * **Code:** 200 OK <br />
     **Content:** 
     ```json
-        {
-          "_id": "63dd20a04ccd605f5664e262",
-          "email": "user1@mail.ru",
-          "password": "$2a$04$PNpGTzompxdmhUbGX/kbRuy/56KMsWzyHsozQO2jct9H4JONhbOGW",
-          "role": "USER",
-          "date": "2023-02-03T14:56:32.461Z"
-        }
+      {
+        "_id": "63dd20a04ccd605f5664e262",
+        "email": "user@mail.ru",
+        "password": "$2a$04$PNpGTzompxdmhUbGX/kbRuy/56KMsWzyHsozQO2jct9H4JONhbOGW",
+        "role": "USER",
+        "date": "2023-02-03T14:56:32.461Z"
+      }
     ```
  
 * **Error Response:**
 
-  * **Code:** 404 NOT FOUND <br />
+  * **Code:** 400 BAD REQUEST <br />
     **Content:** 
     ```json
-      {}
+      {
+        message: "Registration error"
+      }
+      OR
+      {
+        message: "Сheck if all fields are filled"
+      }
+      OR
+      {
+        message: "User with this name exists"
+      }
     ```
 
 * **Notes:**
@@ -1104,7 +1111,7 @@ Registration fo user.
 
 **Auterization**
 ----
-Auterization.
+Auterization for user.
 
 <details>
 
@@ -1118,7 +1125,7 @@ Auterization.
 
 * **Headers:**
 
-   `'Content-Type': 'application/json'`
+    `'Content-Type': 'application/json'`
 
 *  **URL Params**
 
@@ -1137,16 +1144,16 @@ Auterization.
   * **Code:** 200 OK <br />
     **Content:** 
     ```json
-        {
-          "user": {
-              "_id": "63dd20914ccd605f5664e25e",
-              "email": "user5@mail.ru",
-              "password": "$2a$04$ZaOJYkDcaxFnzZ.y6kf9GOtfi5a1WCkenGZLFRtwj9PT/ct5qLw1i",
-              "role": "ADMIN",
-              "date": "2023-02-03T14:56:17.210Z"
-          },
-          "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.               eyJpZCI6IjYzZGQyMDkxNGNjZDYwNWY1NjY0ZTI1ZSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY3NTUxOTE1MywiZXhwIjoxNjc1NTYyMzUzfQ.aJImJSSVNLWgP1Y8QGK37kBQ-Qvtxg25N9dZbMzciZo"
-        }
+      {
+        "user": {
+            "_id": "63dd20914ccd605f5664e25e",
+            "email": "user5@mail.ru",
+            "password": "$2a$04$ZaOJYkDcaxFnzZ.y6kf9GOtfi5a1WCkenGZLFRtwj9PT/ct5qLw1i",
+            "role": "ADMIN",
+            "date": "2023-02-03T14:56:17.210Z"
+        },
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZGQyMDkxNGNjZDYwNWY1NjY0ZTI1ZSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY3NTUxOTE1MywiZXhwIjoxNjc1NTYyMzUzfQ.aJImJSSVNLWgP1Y8QGK37kBQ-Qvtxg25N9dZbMzciZo"
+      }
     ```
  
 * **Error Response:**
@@ -1154,8 +1161,22 @@ Auterization.
   * **Code:** 404 NOT FOUND <br />
     **Content:** 
     ```json
-      {message: `User with user55@mail.ru not found`}
+      {
+        message: "User with user@mail.ru not found"
+      }
     ```
+
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** 
+    ```json
+      {
+        message: "Incorrect password"
+      }
+      OR
+      {
+        message: "Login error"
+      }
+    ```  
 
 * **Notes:**
 
