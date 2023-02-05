@@ -1078,7 +1078,13 @@ Registration for user.
 
 * **Data Params**
 
-    None
+    ```typescript
+      {
+        "email": "user10@gmail.ru",
+        "password": "user10",
+        "role": "USER"
+      }
+    ```
 
 * **Success Response:**
 
@@ -1087,7 +1093,7 @@ Registration for user.
     ```json
       {
         "_id": "63dd20a04ccd605f5664e262",
-        "email": "user@mail.ru",
+        "email": "user10@gmail.ru",
         "password": "$2a$04$PNpGTzompxdmhUbGX/kbRuy/56KMsWzyHsozQO2jct9H4JONhbOGW",
         "role": "USER",
         "date": "2023-02-03T14:56:32.461Z"
@@ -1147,7 +1153,12 @@ Auterization for user.
 
 * **Data Params**
 
-    None
+  ```typescript
+      {
+        "email": "user10@gmail.ru",
+        "password": "user10"
+      }
+  ```
 
 * **Success Response:**
 
@@ -1157,7 +1168,7 @@ Auterization for user.
       {
         "user": {
             "_id": "63dd20914ccd605f5664e25e",
-            "email": "user5@mail.ru",
+            "email": "user10@gmail.ru",
             "password": "$2a$04$ZaOJYkDcaxFnzZ.y6kf9GOtfi5a1WCkenGZLFRtwj9PT/ct5qLw1i",
             "role": "ADMIN",
             "date": "2023-02-03T14:56:17.210Z"
@@ -1172,7 +1183,7 @@ Auterization for user.
     **Content:** 
     ```json
       {
-        message: "User with user@mail.ru not found"
+        message: "User with user@gmail.ru not found"
       }
     ```
 
@@ -1193,16 +1204,3 @@ Auterization for user.
     None
 
 </details>
-
-
-
-
-
-
-
-
-
-
-
-
-

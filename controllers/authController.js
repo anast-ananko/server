@@ -42,7 +42,7 @@ class authController {
       const user = await User.findOne({ email });
       if (!user) {
         return res
-          .status(400)
+          .status(404)
           .json({ message: `User with ${email} not found` });
       }
       const validPassword = bcrypt.compareSync(password, user.password);
