@@ -14,7 +14,8 @@ class OrderService {
 
   async getOrdersByUserId(id) {
     const orders = await Order.find({ userId: id });
-    return orders;
+    const numOrders = await Order.estimatedDocumentCount();
+    return { orders, numOrders };
   }
 
   async createOrder(order) {
@@ -23,7 +24,6 @@ class OrderService {
   }
 
   async updateOrder(id, order) {
-    console.log(order);
     const updatedOrder = await Order.findByIdAndUpdate(id, order, {
       new: true,
     });

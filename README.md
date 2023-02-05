@@ -285,7 +285,7 @@ Updates role of selected user (only available for ADMIN).
  
 * **Error Response:**
 
-  * **Code:** 404 BAD REQUEST <br />
+  * **Code:** 400 BAD REQUEST <br />
     **Content:** 
     ```json
       {
@@ -369,8 +369,7 @@ Returns json data about orders (only available for ADMIN and MANAGER).
 
 * **Headers:**
 
-   `'Content-Type': 'application/json'`<br />
-   `'Authorization': 'Bearer [token]'`
+    `'Authorization': 'Bearer [token]'`
 
 
 *  **URL Params**
@@ -435,7 +434,6 @@ Returns json data about selected order (only available for authorized users).
 
 * **Headers:**
 
-    `'Content-Type': 'application/json'`<br />
     `'Authorization': 'Bearer [token]'`
 
 *  **URL Params**
@@ -500,8 +498,7 @@ Returns json data about all orders for selected user (only available for authori
 
 * **Headers:**
 
-   `'Content-Type': 'application/json'`<br />
-   `'Authorization': 'Bearer [token]'`
+    `'Authorization': 'Bearer [token]'`
 
 *  **URL Params**
 
@@ -605,7 +602,13 @@ Creates a new order (only available for authorized users).
  
 * **Error Response:**
 
-    None
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** 
+    ```json
+      {
+        message: "Check if all fields are filled"
+      }
+    ```
 
 * **Notes:**
 
@@ -668,7 +671,7 @@ Updates status of selected order (only available for ADMIN and MANAGER).
  
 * **Error Response:**
 
-  * **Code:** 404 NOT FOUND <br />
+  * **Code:** 400 BAD REQUEST <br />
     **Content:** 
     ```json
       {
