@@ -756,7 +756,7 @@ Returns json data about ties.
 
 * **Headers:**
 
-   `'Content-Type': 'application/json'`
+    None
 
 *  **URL Params**
 
