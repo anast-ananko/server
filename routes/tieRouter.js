@@ -13,7 +13,7 @@ router.get(
 router.post("", roleMiddleware(["SELLER"]), tieController.createTie);
 router.delete(
   "/:id",
-  roleMiddleware(["ADMIN", "SELLER"]),
+  roleMiddleware(["ADMIN", "MANAGER", "SELLER"]),
   tieController.deleteTie
 );
 

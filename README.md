@@ -54,9 +54,7 @@ Returns json data about users (only available for ADMIN and MANAGER).
 
 * **Headers:**
 
-    `'Content-Type': 'application/json'`<br />
     `'Authorization': 'Bearer [token]'`
-
 
 *  **URL Params**
 
@@ -121,7 +119,6 @@ Returns json data about selected user (only available for ADMIN and MANAGER).
 
 * **Headers:**
 
-    `'Content-Type': 'application/json'`<br />
     `'Authorization': 'Bearer [token]'`
 
 *  **URL Params**
@@ -220,7 +217,13 @@ Creates a new user.
  
 * **Error Response:**
 
-    None
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** 
+    ```json
+      {
+        message: "Incorrect email or password"
+      }
+    ```
 
 * **Notes:**
 
@@ -282,7 +285,7 @@ Updates role of selected user (only available for ADMIN).
  
 * **Error Response:**
 
-  * **Code:** 404 BAD REQUEST <br />
+  * **Code:** 400 BAD REQUEST <br />
     **Content:** 
     ```json
       {
@@ -366,8 +369,7 @@ Returns json data about orders (only available for ADMIN and MANAGER).
 
 * **Headers:**
 
-   `'Content-Type': 'application/json'`<br />
-   `'Authorization': 'Bearer [token]'`
+    `'Authorization': 'Bearer [token]'`
 
 
 *  **URL Params**
@@ -432,7 +434,6 @@ Returns json data about selected order (only available for authorized users).
 
 * **Headers:**
 
-    `'Content-Type': 'application/json'`<br />
     `'Authorization': 'Bearer [token]'`
 
 *  **URL Params**
@@ -497,8 +498,7 @@ Returns json data about all orders for selected user (only available for authori
 
 * **Headers:**
 
-   `'Content-Type': 'application/json'`<br />
-   `'Authorization': 'Bearer [token]'`
+    `'Authorization': 'Bearer [token]'`
 
 *  **URL Params**
 
@@ -602,7 +602,13 @@ Creates a new order (only available for authorized users).
  
 * **Error Response:**
 
-    None
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** 
+    ```json
+      {
+        message: "Check if all fields are filled"
+      }
+    ```
 
 * **Notes:**
 
@@ -665,7 +671,7 @@ Updates status of selected order (only available for ADMIN and MANAGER).
  
 * **Error Response:**
 
-  * **Code:** 404 NOT FOUND <br />
+  * **Code:** 400 BAD REQUEST <br />
     **Content:** 
     ```json
       {
@@ -750,7 +756,7 @@ Returns json data about ties.
 
 * **Headers:**
 
-   `'Content-Type': 'application/json'`
+    None
 
 *  **URL Params**
 
@@ -758,8 +764,7 @@ Returns json data about ties.
 
 * **Query Params**
 
-      None
-  
+    None  
 
     Api returns a header `X-Total-Count` that countains total number of records.
 
@@ -812,7 +817,7 @@ Returns json data about selected tie.
 
 * **Headers:**
 
-   `'Content-Type': 'application/json'`
+    None
 
 *  **URL Params**
 
@@ -874,8 +879,7 @@ Returns json data about all ties for selected user (only available for SELLER).
 
 * **Headers:**
 
-   `'Content-Type': 'application/json'`<br />
-   `'Authorization': 'Bearer [token]'`
+    `'Authorization': 'Bearer [token]'`
 
 *  **URL Params**
 
@@ -976,7 +980,13 @@ Creates a new tie (only available for SELLER).
  
 * **Error Response:**
 
-    None
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** 
+    ```json
+      {
+        message: "Check if all fields are filled"
+      }
+    ```
 
 * **Notes:**
 
@@ -1068,7 +1078,13 @@ Registration for user.
 
 * **Data Params**
 
-    None
+    ```typescript
+      {
+        "email": "user10@gmail.ru",
+        "password": "user10",
+        "role": "USER"
+      }
+    ```
 
 * **Success Response:**
 
@@ -1077,7 +1093,7 @@ Registration for user.
     ```json
       {
         "_id": "63dd20a04ccd605f5664e262",
-        "email": "user@mail.ru",
+        "email": "user10@gmail.ru",
         "password": "$2a$04$PNpGTzompxdmhUbGX/kbRuy/56KMsWzyHsozQO2jct9H4JONhbOGW",
         "role": "USER",
         "date": "2023-02-03T14:56:32.461Z"
@@ -1137,7 +1153,12 @@ Auterization for user.
 
 * **Data Params**
 
-    None
+  ```typescript
+      {
+        "email": "user10@gmail.ru",
+        "password": "user10"
+      }
+  ```
 
 * **Success Response:**
 
@@ -1147,7 +1168,7 @@ Auterization for user.
       {
         "user": {
             "_id": "63dd20914ccd605f5664e25e",
-            "email": "user5@mail.ru",
+            "email": "user10@gmail.ru",
             "password": "$2a$04$ZaOJYkDcaxFnzZ.y6kf9GOtfi5a1WCkenGZLFRtwj9PT/ct5qLw1i",
             "role": "ADMIN",
             "date": "2023-02-03T14:56:17.210Z"
@@ -1162,7 +1183,7 @@ Auterization for user.
     **Content:** 
     ```json
       {
-        message: "User with user@mail.ru not found"
+        message: "User with user@gmail.ru not found"
       }
     ```
 
@@ -1183,16 +1204,3 @@ Auterization for user.
     None
 
 </details>
-
-
-
-
-
-
-
-
-
-
-
-
-

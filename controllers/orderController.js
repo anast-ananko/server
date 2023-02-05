@@ -7,7 +7,7 @@ class OrderController {
       res.setHeader("X-Total-Count", `${numOrders}`);
       return res.json(orders);
     } catch (e) {
-      res.status(500).json(e);
+      res.status(500).json(e.message);
     }
   }
 
@@ -16,21 +16,24 @@ class OrderController {
       const order = await orderService.getOrderById(req.params.id);
       if (!order) {
         return res
-          .status(400)
+          .status(404)
           .json({ message: "Order with this id not found" });
       }
       return res.json(order);
     } catch (e) {
-      res.status(500).json(e);
+      res.status(500).json(e.message);
     }
   }
 
   async getOrdersByUserId(req, res) {
     try {
-      const orders = await orderService.getOrdersByUserId(req.params.id);
+      const { orders, numOrders } = await orderService.getOrdersByUserId(
+        req.params.id
+      );
+      res.setHeader("X-Total-Count", `${numOrders}`);
       return res.json(orders);
     } catch (e) {
-      res.status(500).json(e);
+      res.status(500).json(e.message);
     }
   }
 
@@ -42,12 +45,9 @@ class OrderController {
           .json({ message: "Check if all fields are filled" });
       }
       const order = await orderService.createOrder(req.body);
-      return res.json({
-        order: order,
-        message: "Order successfully accepted",
-      });
+      return res.status(201).json(order);
     } catch (e) {
-      res.status(500).json(e);
+      res.status(500).json(e.message);
     }
   }
 
@@ -69,12 +69,12 @@ class OrderController {
   async deleteOrder(req, res) {
     try {
       const order = await orderService.deleteOrder(req.params.id);
-      return res.json({
-        order: order,
-        message: "Order deleted",
-      });
+      if (!order) {
+        return res.status(404).json({});
+      }
+      return res.json({});
     } catch (e) {
-      res.status(500).json(e);
+      res.status(500).json(e.message);
     }
   }
 }
