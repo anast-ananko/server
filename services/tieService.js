@@ -15,7 +15,8 @@ class TieService {
 
   async getTiesByUserId(id) {
     const ties = await Tie.find({ userId: id });
-    return ties;
+    const numTies = await Tie.estimatedDocumentCount();
+    return { ties, numTies };
   }
 
   async createTie(tie, image) {

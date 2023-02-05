@@ -764,8 +764,7 @@ Returns json data about ties.
 
 * **Query Params**
 
-      None
-  
+    None  
 
     Api returns a header `X-Total-Count` that countains total number of records.
 
@@ -818,7 +817,7 @@ Returns json data about selected tie.
 
 * **Headers:**
 
-   `'Content-Type': 'application/json'`
+    None
 
 *  **URL Params**
 
@@ -880,8 +879,7 @@ Returns json data about all ties for selected user (only available for SELLER).
 
 * **Headers:**
 
-   `'Content-Type': 'application/json'`<br />
-   `'Authorization': 'Bearer [token]'`
+    `'Authorization': 'Bearer [token]'`
 
 *  **URL Params**
 
@@ -982,7 +980,13 @@ Creates a new tie (only available for SELLER).
  
 * **Error Response:**
 
-    None
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** 
+    ```json
+      {
+        message: "Check if all fields are filled"
+      }
+    ```
 
 * **Notes:**
 
