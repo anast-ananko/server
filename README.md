@@ -46,7 +46,7 @@ Returns json data about users (only available for ADMIN and MANAGER).
 
 * **URL**
 
-    /users
+    /api/users
 
 * **Method:**
 
@@ -111,7 +111,7 @@ Returns json data about selected user (only available for ADMIN and MANAGER).
 
 * **URL**
 
-    /users/:id
+    /api/users/:id
 
 * **Method:**
 
@@ -173,7 +173,7 @@ Creates a new user.
 
 * **URL**
 
-    /users
+    /api/users
 
 * **Method:**
 
@@ -240,7 +240,7 @@ Updates role of selected user (only available for ADMIN).
 
 * **URL**
 
-    /users/:id
+    /api/users/:id
 
 * **Method:**
 
@@ -307,7 +307,7 @@ Deletes selected user (only available for ADMIN).
 
 * **URL**
 
-    /users/:id
+    /api/users/:id
 
 * **Method:**
 
@@ -361,7 +361,7 @@ Returns json data about orders (only available for ADMIN and MANAGER).
 
 * **URL**
 
-    orders
+    /api/orders
 
 * **Method:**
 
@@ -426,7 +426,7 @@ Returns json data about selected order (only available for authorized users).
 
 * **URL**
 
-    /orders/:id
+    /api/orders/:id
 
 * **Method:**
 
@@ -490,7 +490,7 @@ Returns json data about all orders for selected user (only available for authori
 
 * **URL**
 
-    /orders/user/:id
+    /api/orders/user/:id
 
 * **Method:**
 
@@ -556,7 +556,7 @@ Creates a new order (only available for authorized users).
 
 * **URL**
 
-    /orders
+    /api/orders
 
 * **Method:**
 
@@ -625,7 +625,7 @@ Updates status of selected order (only available for ADMIN and MANAGER).
 
 * **URL**
 
-    /orders/:id
+    /api/orders/:id
 
 * **Method:**
 
@@ -693,7 +693,7 @@ Deletes selected order (only available for ADMIN and MANAGER).
 
 * **URL**
 
-    /orders/:id
+    /api/orders/:id
 
 * **Method:**
 
@@ -748,7 +748,7 @@ Returns json data about ties.
 
 * **URL**
 
-    ties
+    /api/ties
 
 * **Method:**
 
@@ -809,7 +809,7 @@ Returns json data about selected tie.
 
 * **URL**
 
-    /ties/:id
+    /api/ties/:id
 
 * **Method:**
 
@@ -871,7 +871,7 @@ Returns json data about all ties for selected user (only available for SELLER).
 
 * **URL**
 
-    /ties/user/:id
+    /api/ties/user/:id
 
 * **Method:**
 
@@ -935,7 +935,7 @@ Creates a new tie (only available for SELLER).
 
 * **URL**
 
-    /ties
+    /api/ties
 
 * **Method:**
 
@@ -1003,7 +1003,7 @@ Deletes selected tie (only available for ADMIN, MANAGER and SELLER).
 
 * **URL**
 
-    /ties/:id
+    /api/ties/:id
 
 * **Method:**
 
@@ -1058,7 +1058,7 @@ Registration for user.
 
 * **URL**
 
-    /registration
+    /api/auth/registration
 
 * **Method:**
 
@@ -1133,7 +1133,7 @@ Auterization for user.
 
 * **URL**
 
-    /login
+    /api/auth/login
 
 * **Method:**
 

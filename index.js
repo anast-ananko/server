@@ -3,10 +3,16 @@ const express = require("express");
 const mongoose = require("mongoose");
 const router = require("./routes/index.js");
 const fileUpload = require("express-fileupload");
+const cors = require("cors");
 
 const PORT = process.env.PORT || 5000;
 
 const app = express();
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 app.use(express.json({ extended: true }));
 app.use(express.static("static"));
 app.use(fileUpload({}));
