@@ -1,5 +1,5 @@
 const userService = require("../services/userService");
-
+const User =require("../models/User");
 class UserController {
   async getUsers(req, res) {
     try {
@@ -28,6 +28,11 @@ class UserController {
     try {
       if (!req.body.email || !req.body.password) {
         return res.status(400).json({ message: "Incorrect email or password" });
+      }
+      const {email} = req.body.email;
+      const candidate = await User.findOne({ email });
+      if (candidate) {
+        return res.status(400).json({ message: "User with this name exists" });
       }
       const user = await userService.createUser(req.body);
       return res.status(201).json(user);
