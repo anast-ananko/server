@@ -1199,7 +1199,7 @@ Registration for user.
 </details>
 
 
-**Auterization**
+**Authorization**
 ----
 Auterization for user.
 
