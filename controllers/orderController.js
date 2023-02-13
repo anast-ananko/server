@@ -37,6 +37,18 @@ class OrderController {
     }
   }
 
+  async getOrdersBySellerId(req, res) {
+    try {
+      const { orders, numOrders } = await orderService.getOrdersBySellerId(
+        req.params.id
+      );
+      res.setHeader("X-Total-Count", `${numOrders}`);
+      return res.json(orders);
+    } catch (e) {
+      res.status(500).json(e.message);
+    }
+  }
+
   async createOrder(req, res) {
     try {
       if (!req.body.userId || !req.body.image || !req.body.price) {

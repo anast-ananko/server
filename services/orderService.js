@@ -18,6 +18,12 @@ class OrderService {
     return { orders, numOrders };
   }
 
+  async getOrdersBySellerId(id) {
+    const orders = await Order.find({ sellerId: id });
+    const numOrders = await Order.estimatedDocumentCount();
+    return { orders, numOrders };
+  }
+
   async createOrder(order) {
     const createdOrder = await Order.create(order);
     return createdOrder;
