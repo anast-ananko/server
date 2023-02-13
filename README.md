@@ -20,8 +20,8 @@ Api for Tie Creators.
 - **Orders**
     - [Get Orders](https://github.com/anast-ananko/server/tree/develop#get-orders)
     - [Get Order](https://github.com/anast-ananko/server/tree/develop#get-order)
-    - [Get Orders by UserId](https://github.com/anast-ananko/server/tree/develop#get-orders-by-seller-id)
-    - [Get Orders by SellerId](https://github.com/anast-ananko/server/tree/develop#get-orders-by-user-id)
+    - [Get Orders by UserId](https://github.com/anast-ananko/server/tree/develop#get-orders-by-user-id)
+    - [Get Orders by SellerId](https://github.com/anast-ananko/server/tree/develop#get-orders-by-seller-id)
     - [Create Order](https://github.com/anast-ananko/server/tree/develop#create-order)
     - [Update Order](https://github.com/anast-ananko/server/tree/develop#update-order)
     - [Delete Order](https://github.com/anast-ananko/server/tree/develop#delete-order)
