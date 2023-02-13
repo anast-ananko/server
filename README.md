@@ -20,7 +20,8 @@ Api for Tie Creators.
 - **Orders**
     - [Get Orders](https://github.com/anast-ananko/server/tree/develop#get-orders)
     - [Get Order](https://github.com/anast-ananko/server/tree/develop#get-order)
-    - [Get Order by UserId](https://github.com/anast-ananko/server/tree/develop#get-order-by-user-id)
+    - [Get Orders by UserId](https://github.com/anast-ananko/server/tree/develop#get-orders-by-user-id)
+    - [Get Orders by SellerId](https://github.com/anast-ananko/server/tree/develop#get-orders-by-seller-id)
     - [Create Order](https://github.com/anast-ananko/server/tree/develop#create-order)
     - [Update Order](https://github.com/anast-ananko/server/tree/develop#update-order)
     - [Delete Order](https://github.com/anast-ananko/server/tree/develop#delete-order)
@@ -28,7 +29,7 @@ Api for Tie Creators.
 - **Ties**
     - [Get Ties](https://github.com/anast-ananko/server/tree/develop#get-ties)
     - [Get Tie](https://github.com/anast-ananko/server/tree/develop#get-tie)
-    - [Get Tie by UserId](https://github.com/anast-ananko/server/tree/develop#get-tie-by-user-id)
+    - [Get Ties by UserId](https://github.com/anast-ananko/server/tree/develop#get-ties-by-user-id)
     - [Create Tie](https://github.com/anast-ananko/server/tree/develop#create-tie)
     - [Update Tie](https://github.com/anast-ananko/server/tree/develop#update-tie)
     - [Delete Tie](https://github.com/anast-ananko/server/tree/develop#delete-tie)
@@ -396,10 +397,11 @@ Returns json data about orders (only available for ADMIN and MANAGER).
         {
           "_id": "63dd20a04ccd605f5664e262",
           "userId": "63dbd9a0ed3f9585d55acd7b",
-          "image": "0bf7f318-5e02-431c-b684-55a481c5bfac.jpg",
+          "image": "https://i.ibb.co/ZLs1r2L/14.jpg",
           "price": 30,
           "status": "NON-PAID",
-          "date": "2023-02-03T14:56:32.461Z"
+          "date": "2023-02-03T14:56:32.461Z",
+          "sellerId": "63e3fb253a85875ab9a671c4"
         }
       ]
     ```
@@ -458,10 +460,11 @@ Returns json data about selected order (only available for authorized users).
       {
         "_id": "63dd20a04ccd605f5664e262",
         "userId": "63dbd9a0ed3f9585d55acd7b",
-        "image": "0bf7f318-5e02-431c-b684-55a481c5bfac.jpg",
+        "image": "https://i.ibb.co/ZLs1r2L/14.jpg",
         "price": 30,
         "status": "NON-PAID",
-        "date": "2023-02-03T14:56:32.461Z"
+        "date": "2023-02-03T14:56:32.461Z",
+        "sellerId": "63e3fb253a85875ab9a671c4"
       }
     ```
  
@@ -525,10 +528,78 @@ Returns json data about all orders for selected user (only available for authori
         {
           "_id": "63dd20a04ccd605f5664e262",
           "userId": "63dbd9a0ed3f9585d55acd7b",
-          "image": "0bf7f318-5e02-431c-b684-55a481c5bfac.jpg",
+          "image": "https://i.ibb.co/ZLs1r2L/14.jpg",
           "price": 30,
           "status": "NON-PAID",
-          "date": "2023-02-03T14:56:32.461Z"
+          "date": "2023-02-03T14:56:32.461Z",
+          "sellerId": "63e3fb253a85875ab9a671c4"
+        }
+      ]
+    ```
+    **Headers:**
+    ```
+      "X-Total-Count": "10"
+    ```
+ 
+* **Error Response:**
+
+    None
+
+* **Notes:**
+
+    None
+
+</details>
+
+
+**Get Orders by SellerId**
+----
+Returns json data about all orders for selected seller (only available for authorized users).
+
+<details>
+
+* **URL**
+
+    /api/orders/seller/:id
+
+* **Method:**
+
+    `GET`
+
+* **Headers:**
+
+    `'Authorization': 'Bearer [token]'`
+
+*  **URL Params**
+
+    **Required:**
+ 
+    `id=[string]`
+
+    Api returns a header `X-Total-Count` that countains total number of records.
+
+* **Query Params**
+
+    None
+
+* **Data Params**
+
+    None
+
+* **Success Response:**
+
+  * **Code:** 200 OK <br />
+    **Content:** 
+    ```json
+      [
+        {
+          "_id": "63dd20a04ccd605f5664e262",
+          "userId": "63dbd9a0ed3f9585d55acd7b",
+          "image": "https://i.ibb.co/ZLs1r2L/14.jpg",
+          "price": 30,
+          "status": "NON-PAID",
+          "date": "2023-02-03T14:56:32.461Z",
+          "sellerId": "63e3fb253a85875ab9a671c4"
         }
       ]
     ```
@@ -580,8 +651,9 @@ Creates a new order (only available for authorized users).
     ```typescript
       {
         "userId": "63dbd9a0ed3f9585d55acd7b",
-        "image": "0bf7f318-5e02-431c-b684-55a481c5bfac.jpg",
-        "price": 30
+        "image": "https://i.ibb.co/ZLs1r2L/14.jpg",
+        "price": 30,
+        "sellerId": "63e3fb253a85875ab9a671c4"
       }
     ```
 
@@ -593,10 +665,11 @@ Creates a new order (only available for authorized users).
       {
         "_id": "63dd20a04ccd605f5664e262",
         "userId": "63dbd9a0ed3f9585d55acd7b",
-        "image": "0bf7f318-5e02-431c-b684-55a481c5bfac.jpg",
+        "image": "https://i.ibb.co/ZLs1r2L/14.jpg",
         "price": 30,
         "status": "NON-PAID",
-        "date": "2023-02-03T14:56:32.461Z"
+        "date": "2023-02-03T14:56:32.461Z",
+        "sellerId": "63e3fb253a85875ab9a671c4"
       }
     ```
  
@@ -662,10 +735,11 @@ Updates status of selected order (only available for ADMIN and MANAGER).
       {
         "_id": "63dd20a04ccd605f5664e262",
         "userId": "63dbd9a0ed3f9585d55acd7b",
-        "image": "0bf7f318-5e02-431c-b684-55a481c5bfac.jpg",
+        "image": "https://i.ibb.co/ZLs1r2L/14.jpg",
         "price": 30,
         "status": "PAID",
-        "date": "2023-02-03T14:56:32.461Z"
+        "date": "2023-02-03T14:56:32.461Z",
+        "sellerId": "63e3fb253a85875ab9a671c4"
       }
     ```
  
@@ -781,8 +855,8 @@ Returns json data about ties.
         {
           "_id": "63d9764a9110523df50c4d37",
           "userId": "63dbd9a0ed3f9585d55acd7b",
-          "name": "Blue tie",
-          "image": "6be73cbd-1778-4e3b-a37a-bdbd10c0a827.jpg"
+          "name": "MU-765",
+          "image": "https://i.ibb.co/ZLs1r2L/14.jpg"
         }
       ]
     ```
@@ -841,8 +915,8 @@ Returns json data about selected tie.
       {
         "_id": "63d9764a9110523df50c4d37",
         "userId": "63dbd9a0ed3f9585d55acd7b",
-        "name": "Blue tie",
-        "image": "6be73cbd-1778-4e3b-a37a-bdbd10c0a827.jpg"
+        "name": "RF-56",
+        "image": "https://i.ibb.co/ZLs1r2L/14.jpg"
       }
     ```
  
@@ -906,8 +980,8 @@ Returns json data about all ties for selected user (only available for SELLER).
         {
           "_id": "63d9764a9110523df50c4d37",
           "userId": "63dbd9a0ed3f9585d55acd7b",
-          "name": "Blue tie",
-          "image": "6be73cbd-1778-4e3b-a37a-bdbd10c0a827.jpg"
+          "name": "RT-67",
+          "image": "https://i.ibb.co/ZLs1r2L/14.jpg"
         }
       ]
     ```
@@ -961,7 +1035,7 @@ Creates a new tie (only available for SELLER).
         "userId": "63dbd9a0ed3f9585d55acd7b",
         "name": "Blue tie",
         Property image is optional
-        "image": "6be73cbd-1778-4e3b-a37a-bdbd10c0a827.jpg"
+        "image": "https://i.ibb.co/ZLs1r2L/14.jpg"
       }
     ```
 
@@ -974,7 +1048,7 @@ Creates a new tie (only available for SELLER).
         "_id": "63d9764a9110523df50c4d37",
         "userId": "63dbd9a0ed3f9585d55acd7b",
         "name": "Blue tie",
-        "image": "6be73cbd-1778-4e3b-a37a-bdbd10c0a827.jpg"
+        "image": "https://i.ibb.co/ZLs1r2L/14.jpg"
       }
     ```
  

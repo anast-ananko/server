@@ -4,6 +4,7 @@ const Order = new Schema(
   {
     userId: { type: String, required: true },
     image: { type: String, required: true },
+    sellerId: { type: String, required: true },
     price: { type: Number, required: true },
     status: { type: String, default: "NON-PAID" },
     date: { type: Date, default: Date.now },
