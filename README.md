@@ -856,7 +856,8 @@ Returns json data about ties.
           "_id": "63d9764a9110523df50c4d37",
           "userId": "63dbd9a0ed3f9585d55acd7b",
           "name": "MU-765",
-          "image": "https://i.ibb.co/ZLs1r2L/14.jpg"
+          "image": "https://i.ibb.co/ZLs1r2L/14.jpg",
+          "price": 20
         }
       ]
     ```
@@ -916,7 +917,8 @@ Returns json data about selected tie.
         "_id": "63d9764a9110523df50c4d37",
         "userId": "63dbd9a0ed3f9585d55acd7b",
         "name": "RF-56",
-        "image": "https://i.ibb.co/ZLs1r2L/14.jpg"
+        "image": "https://i.ibb.co/ZLs1r2L/14.jpg",
+        "price": 20
       }
     ```
  
@@ -981,7 +983,8 @@ Returns json data about all ties for selected user (only available for SELLER).
           "_id": "63d9764a9110523df50c4d37",
           "userId": "63dbd9a0ed3f9585d55acd7b",
           "name": "RT-67",
-          "image": "https://i.ibb.co/ZLs1r2L/14.jpg"
+          "image": "https://i.ibb.co/ZLs1r2L/14.jpg",
+          "price": 20
         }
       ]
     ```
@@ -1033,7 +1036,8 @@ Creates a new tie (only available for SELLER).
     ```typescript
       {
         "userId": "63dbd9a0ed3f9585d55acd7b",
-        "name": "Blue tie",
+        "name": "RT-23",
+        "price": 20,
         Property image is optional
         "image": "https://i.ibb.co/ZLs1r2L/14.jpg"
       }
@@ -1047,8 +1051,9 @@ Creates a new tie (only available for SELLER).
       {
         "_id": "63d9764a9110523df50c4d37",
         "userId": "63dbd9a0ed3f9585d55acd7b",
-        "name": "Blue tie",
-        "image": "https://i.ibb.co/ZLs1r2L/14.jpg"
+        "name": "OP-234",
+        "image": "https://i.ibb.co/ZLs1r2L/14.jpg", 
+        "price": 20
       }
     ```
  
