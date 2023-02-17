@@ -35,12 +35,12 @@ class TieController {
 
   async createTie(req, res) {
     try {
-      if (!req.body.userId || !req.body.name) {
+      if (!req.body.userId || !req.body.name || !req.body.price || !req.body.image) {
         return res
           .status(400)
           .json({ message: "Check if all fields are filled" });
       }
-      const tie = await tieService.createTie(req.body, req.files.image);
+      const tie = await tieService.createTie(req.body);
       return res.status(201).json(tie);
     } catch (e) {
       res.status(500).json(e.message);

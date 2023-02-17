@@ -31,7 +31,6 @@ Api for Tie Creators.
     - [Get Tie](https://github.com/anast-ananko/server/tree/develop#get-tie)
     - [Get Ties by UserId](https://github.com/anast-ananko/server/tree/develop#get-ties-by-user-id)
     - [Create Tie](https://github.com/anast-ananko/server/tree/develop#create-tie)
-    - [Update Tie](https://github.com/anast-ananko/server/tree/develop#update-tie)
     - [Delete Tie](https://github.com/anast-ananko/server/tree/develop#delete-tie)
    
 - **Registration and Authorization**
@@ -1038,7 +1037,6 @@ Creates a new tie (only available for SELLER).
         "userId": "63dbd9a0ed3f9585d55acd7b",
         "name": "RT-23",
         "price": 20,
-        Property image is optional
         "image": "https://i.ibb.co/ZLs1r2L/14.jpg"
       }
     ```

@@ -19,9 +19,8 @@ class TieService {
     return { ties, numTies };
   }
 
-  async createTie(tie, image) {
-    const fileName = fileService.saveFile(image);
-    const createdTie = await Tie.create({ ...tie, image: fileName });
+  async createTie(tie) {
+    const createdTie = await Tie.create(tie);
     return createdTie;
   }
 
