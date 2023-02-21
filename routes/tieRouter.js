@@ -10,6 +10,11 @@ router.get(
   roleMiddleware(["SELLER"]),
   tieController.getTiesByUserId
 );
+router.get(
+  "/user/another/:id",
+  roleMiddleware(["USER"]),
+  tieController.getAnotherTiesForUser
+);
 router.post("", roleMiddleware(["SELLER"]), tieController.createTie);
 router.delete(
   "/:id",

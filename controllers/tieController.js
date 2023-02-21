@@ -33,9 +33,26 @@ class TieController {
     }
   }
 
+  async getAnotherTiesForUser(req, res) {
+    try {
+      const { ties, numTies } = await tieService.getAnotherTiesForUser(
+        req.params.id
+      );
+      res.setHeader("X-Total-Count", `${numTies}`);
+      return res.json(ties);
+    } catch (e) {
+      res.status(500).json(e.message);
+    }
+  }
+
   async createTie(req, res) {
     try {
-      if (!req.body.userId || !req.body.name || !req.body.price || !req.body.image) {
+      if (
+        !req.body.userId ||
+        !req.body.name ||
+        !req.body.price ||
+        !req.body.image
+      ) {
         return res
           .status(400)
           .json({ message: "Check if all fields are filled" });

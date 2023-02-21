@@ -30,6 +30,7 @@ Api for Tie Creators.
     - [Get Ties](https://github.com/anast-ananko/server/tree/develop#get-ties)
     - [Get Tie](https://github.com/anast-ananko/server/tree/develop#get-tie)
     - [Get Ties by UserId](https://github.com/anast-ananko/server/tree/develop#get-ties-by-user-id)
+    - [Get Another Ties](https://github.com/anast-ananko/server/tree/develop#get-another-ties)
     - [Create Tie](https://github.com/anast-ananko/server/tree/develop#create-tie)
     - [Delete Tie](https://github.com/anast-ananko/server/tree/develop#delete-tie)
    
@@ -982,6 +983,68 @@ Returns json data about all ties for selected user (only available for SELLER).
           "_id": "63d9764a9110523df50c4d37",
           "userId": "63dbd9a0ed3f9585d55acd7b",
           "name": "RT-67",
+          "image": "https://i.ibb.co/ZLs1r2L/14.jpg",
+          "price": 20
+        }
+      ]
+    ```
+    **Headers:**
+    ```
+      "X-Total-Count": "10"
+    ```
+ 
+* **Error Response:**
+
+    None
+
+* **Notes:**
+
+    None
+
+</details>
+
+**Get Another Ties**
+----
+Returns json data about ties that are not buyed by the user.
+
+<details>
+
+* **URL**
+
+    /api/ties/user/another/:id
+
+* **Method:**
+
+    `GET`
+
+* **Headers:**
+
+    None
+
+*  **URL Params**
+
+    None
+
+* **Query Params**
+
+    None  
+
+    Api returns a header `X-Total-Count` that countains total number of records.
+
+* **Data Params**
+
+    None
+
+* **Success Response:**
+
+  * **Code:** 200 OK <br />
+    **Content:** 
+    ```json
+      [
+        {
+          "_id": "63d9764a9110523df50c4d37",
+          "userId": "63dbd9a0ed3f9585d55acd7b",
+          "name": "MU-765",
           "image": "https://i.ibb.co/ZLs1r2L/14.jpg",
           "price": 20
         }
