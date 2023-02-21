@@ -2,7 +2,6 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const router = require("./routes/index.js");
-const fileUpload = require("express-fileupload");
 const cors = require("cors");
 
 const PORT = process.env.PORT || 5000;
@@ -14,12 +13,14 @@ app.use(
   })
 );
 
-app.use(express.json({limit: '50mb'}));
-app.use(express.urlencoded({
-  limit: '50mb',
-  extended: true,
-  parameterLimit: 50000
-}));
+app.use(express.json({ limit: "50mb" }));
+app.use(
+  express.urlencoded({
+    limit: "50mb",
+    extended: true,
+    parameterLimit: 50000,
+  })
+);
 
 app.use(express.json({ extended: true }));
 app.use("/api", router);

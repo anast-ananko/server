@@ -1,5 +1,5 @@
 const Tie = require("../models/Tie");
-const fileService = require("../services/fileService");
+const Order = require("../models/Order");
 
 class TieService {
   async getTies() {
@@ -15,6 +15,16 @@ class TieService {
 
   async getTiesByUserId(id) {
     const ties = await Tie.find({ userId: id });
+    const numTies = await Tie.estimatedDocumentCount();
+    return { ties, numTies };
+  }
+
+  async getAnotherTiesForUser(id) {
+    const orders = await Order.find({ userId: id });
+    const images = orders.map((item) => {
+      return item.image;
+    });
+    const ties = await Tie.find({ image: { $nin: images } });
     const numTies = await Tie.estimatedDocumentCount();
     return { ties, numTies };
   }
