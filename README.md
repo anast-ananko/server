@@ -11,32 +11,32 @@ Api for Tie Creators.
 - Now you can send requests to the address: `http://localhost:5000`.
 
 - **Users**
-    - [Get Users](https://github.com/anast-ananko/server/tree#get-users)
-    - [Get User](https://github.com/anast-ananko/server/tree#get-user)
-    - [Create User](https://github.com/anast-ananko/server/tree#create-user)
-    - [Update User](https://github.com/anast-ananko/server/tree#update-user)
-    - [Delete User](https://github.com/anast-ananko/server/tree#delete-user)
+    - [Get Users](https://github.com/anast-ananko/server#get-users)
+    - [Get User](https://github.com/anast-ananko/server#get-user)
+    - [Create User](https://github.com/anast-ananko/server#create-user)
+    - [Update User](https://github.com/anast-ananko/server#update-user)
+    - [Delete User](https://github.com/anast-ananko/server#delete-user)
   
 - **Orders**
-    - [Get Orders](https://github.com/anast-ananko/server/tree#get-orders)
-    - [Get Order](https://github.com/anast-ananko/server/tree#get-order)
-    - [Get Orders by UserId](https://github.com/anast-ananko/server/tree#get-orders-by-user-id)
-    - [Get Orders by SellerId](https://github.com/anast-ananko/server/tree#get-orders-by-seller-id)
-    - [Create Order](https://github.com/anast-ananko/server/tree#create-order)
-    - [Update Order](https://github.com/anast-ananko/server/tree#update-order)
-    - [Delete Order](https://github.com/anast-ananko/server/tree#delete-order)
+    - [Get Orders](https://github.com/anast-ananko/server#get-orders)
+    - [Get Order](https://github.com/anast-ananko/server#get-order)
+    - [Get Orders by UserId](https://github.com/anast-ananko/server#get-orders-by-user-id)
+    - [Get Orders by SellerId](https://github.com/anast-ananko/server#get-orders-by-seller-id)
+    - [Create Order](https://github.com/anast-ananko/server#create-order)
+    - [Update Order](https://github.com/anast-ananko/server#update-order)
+    - [Delete Order](https://github.com/anast-ananko/server#delete-order)
 
 - **Ties**
-    - [Get Ties](https://github.com/anast-ananko/server/tree#get-ties)
-    - [Get Tie](https://github.com/anast-ananko/server/tree#get-tie)
-    - [Get Ties by UserId](https://github.com/anast-ananko/server/tree#get-ties-by-user-id)
-    - [Get Another Ties](https://github.com/anast-ananko/server/tree#get-another-ties)
-    - [Create Tie](https://github.com/anast-ananko/server/tree#create-tie)
-    - [Delete Tie](https://github.com/anast-ananko/server/tree#delete-tie)
+    - [Get Ties](https://github.com/anast-ananko/server#get-ties)
+    - [Get Tie](https://github.com/anast-ananko/server#get-tie)
+    - [Get Ties by UserId](https://github.com/anast-ananko/server#get-ties-by-user-id)
+    - [Get Another Ties](https://github.com/anast-ananko/server#get-another-ties)
+    - [Create Tie](https://github.com/anast-ananko/server#create-tie)
+    - [Delete Tie](https://github.com/anast-ananko/server#delete-tie)
    
 - **Registration and Authorization**
-    - [Registration](https://github.com/anast-ananko/server/tree#registration)
-    - [Authorization](https://github.com/anast-ananko/server/tree#authorization)
+    - [Registration](https://github.com/anast-ananko/server#registration)
+    - [Authorization](https://github.com/anast-ananko/server#authorization)
 
 
 **Get Users**
